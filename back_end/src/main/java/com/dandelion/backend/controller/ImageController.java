@@ -29,11 +29,6 @@ public class ImageController {
     public String fileupload(@RequestParam("files") MultipartFile[] multipartFile) {
         int order = 0;
 
-//        Path dir = Paths.get("C:\\javian\\dandelion\\BackEnd_Board\\vue\\dandelion 2\\src\\assets\\images\\");
-<<<<<<< HEAD
-=======
-//        Path dir = imageService.getAbsolutePath("../vue/dandelion 2/src/assets/images/");
->>>>>>> 5d80c621fa0b03595b881e4cc6186efa2a6f3c8a
         Path dir = imageService.getAbsolutePath("../front_end/src/assets/images/");
 
         Board board = boardService.findLastBoard();
