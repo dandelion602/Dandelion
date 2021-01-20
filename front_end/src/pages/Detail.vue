@@ -13,7 +13,7 @@
                 thumbnails
                 infinite
               >
-                <q-carousel-slide v-for="image in curItem.images" :key="image.number" :name="image.orderNumber" :img-src="require('../assets/images/' + image.fileName +image.format)">
+                <q-carousel-slide v-for="itemImage in curItem.itemImages" :key="itemImage.number" :name="itemImage.orderNumber" :img-src="require('../assets/images/' + itemImage.fileName +itemImage.format)">
                 </q-carousel-slide>
               </q-carousel>
             </div>
@@ -36,7 +36,7 @@
             <q-item-section avatar>
               <q-avatar rounded>
                 <q-img
-                  :src="require('../assets/images/' + item.images[0].fileName + item.images[0].format)"
+                  :src="require('../assets/images/' + item.itemImages[0].fileName + item.itemImages[0].format)"
                   :ratio="1"
                 />
               </q-avatar>

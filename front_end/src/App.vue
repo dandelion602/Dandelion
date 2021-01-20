@@ -6,9 +6,6 @@
 <script>
 import { mapActions } from "vuex"
 export default {
-  name: 'App',
-  beforeCreate :{
-    ...mapActions(["getMemberInfo"])
-  }
+  name: 'App'
 }
 </script>

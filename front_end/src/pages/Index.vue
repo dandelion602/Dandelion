@@ -6,8 +6,8 @@
           <q-img
             :src="
               require('../assets/images/' +
-                item.images[0].fileName +
-                item.images[0].format)
+                item.itemImages[0].fileName +
+                item.itemImages[0].format)
             "
             :ratio="1"
           />
