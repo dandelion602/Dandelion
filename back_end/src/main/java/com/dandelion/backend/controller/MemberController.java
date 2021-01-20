@@ -2,11 +2,13 @@ package com.dandelion.backend.controller;
 
 
 import com.dandelion.backend.entity.member.Member;
+import com.dandelion.backend.entity.member.MyMemberDetails;
 import com.dandelion.backend.service.MemberService;
 import com.dandelion.backend.utils.TokenUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,9 +30,14 @@ public class MemberController {
                 : ResponseEntity.ok(TokenUtils.generateJwtToken(memberService.signUp(member)));
     }
 
-    @GetMapping(value = "/findAll")
-    public ResponseEntity findAll() {
-        return ResponseEntity.ok(memberService.findAll());
-    }
+//    @GetMapping(value = "/findAll")
+//    public ResponseEntity findAll() {
+//        return ResponseEntity.ok(memberService.findAll());
+//    }
 
+    @GetMapping(value = "/findAll")
+    public ResponseEntity findMe(@AuthenticationPrincipal MyMemberDetails myMemberDetails) {
+        return ResponseEntity.ok(memberService.findById(myMemberDetails.getId()));
+
+    }
 }

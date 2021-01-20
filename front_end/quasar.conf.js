@@ -81,7 +81,7 @@ cfg.module.rules.push({
       proxy: {
         '/api':{
           // target:"http://140.238.19.235:80/",
-          target:"http://10.6.2.23:9090/",
+          target:"http://localhost:9090/",
           changeOrigin:true,
           pathRewrite:{
             '^/api': ''

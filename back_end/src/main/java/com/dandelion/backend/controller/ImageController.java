@@ -30,7 +30,8 @@ public class ImageController {
         int order = 0;
 
 //        Path dir = Paths.get("C:\\javian\\dandelion\\BackEnd_Board\\vue\\dandelion 2\\src\\assets\\images\\");
-        Path dir = imageService.getAbsolutePath("../vue/dandelion 2/src/assets/images/");
+//        Path dir = imageService.getAbsolutePath("../vue/dandelion 2/src/assets/images/");
+        Path dir = imageService.getAbsolutePath("../front_end/src/assets/images/");
 
         Board board = boardService.findLastBoard();
 
