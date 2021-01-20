@@ -23,7 +23,7 @@ const onlyAuthUser = (to, from , next) => {
 const routes = [
   {
     path: '/',
-    component: () => import('layouts/MainLayout.vue'),
+    component: () => import('layouts/Layout.vue'),
     children: [
       { path: '', component: () => import('pages/Index.vue') },
       { path: 'detail/:itemId', component: () => import('pages/Detail.vue') },
