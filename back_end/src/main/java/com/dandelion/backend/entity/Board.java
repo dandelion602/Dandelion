@@ -4,47 +4,55 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.Collection;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 
 @Getter
 @Setter
+@Table(name = "board")
 @Entity
 public class Board {
-
-    public Board() {
-    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int number;
 
-    @Column(name = "title")
+    @Column(name = "title", nullable = false)
     private String title;
 
-    @Column(name = "contents", length = 1000)
-    private String contents;
+    @JoinColumn(name = "member_number", nullable = false)
+    private int memberNumber = 1;
 
-    @Column(name = "date")
+    @Column(name = "view", nullable = false)
+    private int view;
+
+    @Column(name = "date", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date date = new Date();
 
-    @Column(name = "modifyDate")
+    @Column(name = "modify_date")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date modifyDate = new Date();
+    private Date modifyDate;
 
-    @Column(name = "view")
-    private int view;
+    @Column(name = "contents", length = 5000)
+    private String contents;
 
-    @Column(name = "tempStatus")
-    private int tempStatus;
+    @Column(name = "status", nullable = false)
+    private int status;
 
-    @Column(name = "price")
+    @Column(name = "price", nullable = false)
     private int price;
 
-    @OneToMany
-    @JoinColumn(name = "boardNumber")
-    public Collection<Image> images;
 
+    //     --FK--
+    @OneToMany(mappedBy = "boardNumber", targetEntity = ItemImage.class)
+    private List<ItemImage> itemImages = new ArrayList<>();
+
+    @OneToOne(mappedBy = "boardNumber", targetEntity = Locker.class)
+    private Locker locker;
+
+    @OneToOne(mappedBy = "boardNumber", targetEntity = Deal.class)
+    private Deal deal;
 }

@@ -1,6 +1,6 @@
 package com.dandelion.backend.service;
 
-import com.dandelion.backend.entity.Image;
+import com.dandelion.backend.entity.ItemImage;
 import com.dandelion.backend.repository.ImageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,11 +21,11 @@ public class ImageService {
     ImageRepository imageRepository;
 
 
-    public Image save(Image image) {
-        return imageRepository.save(image);
+    public ItemImage save(ItemImage itemImage) {
+        return imageRepository.save(itemImage);
     }
 
-    public List<Image> imageList () {
+    public List<ItemImage> imageList () {
         return imageRepository.findAll();
     }
 

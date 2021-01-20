@@ -1,7 +1,7 @@
 package com.dandelion.backend.controller;
 
 import com.dandelion.backend.entity.Board;
-import com.dandelion.backend.entity.Image;
+import com.dandelion.backend.entity.ItemImage;
 import com.dandelion.backend.service.BoardService;
 import com.dandelion.backend.service.ImageService;
 
@@ -36,16 +36,16 @@ public class ImageController {
         for (MultipartFile file : multipartFile) {
 
             imageService.write(file, dir.toAbsolutePath(), board.getNumber() + "_" + (order));
-            Image image = new Image();
+            ItemImage itemImage = new ItemImage();
             // 나중에 이미지서비스에 메서드로 옮기기... 아니면 생성자라도 만드러엇 단순화시키기
-            image.setFileName(board.getNumber() + "_" + (order));
-            image.setSize( (int) file.getSize());
-            image.setImageDir(dir.toString());
-            image.setFileOriName(file.getOriginalFilename());
-            image.setFormat(imageService.getFormat(file));
-            image.setOrderNumber(order);
-            image.setBoardNumber(board.getNumber());
-            imageService.save(image);
+            itemImage.setFileName(board.getNumber() + "_" + (order));
+            itemImage.setSize( (int) file.getSize());
+            itemImage.setImageDir(dir.toString());
+            itemImage.setOriginalFileName(file.getOriginalFilename());
+            itemImage.setFormat(imageService.getFormat(file));
+            itemImage.setOrderNumber(order);
+            itemImage.setBoardNumber(board.getNumber());
+            imageService.save(itemImage);
 
             order++;
         }

@@ -12,6 +12,9 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import java.util.Enumeration;
+
 @RequiredArgsConstructor
 @RestController
 @RequestMapping(value = "/user")
@@ -29,6 +32,18 @@ public class MemberController {
                 ? ResponseEntity.badRequest().build()
                 : ResponseEntity.ok(TokenUtils.generateJwtToken(memberService.signUp(member)));
     }
+
+//    @PostMapping(value = "/signUp")
+//    public ResponseEntity signUp(HttpServletRequest request) {
+//        System.out.println("------------------------------------");
+//        Enumeration<String> headerNames = request.getParameterNames();
+//        System.out.println("------------------------------------");
+//        System.out.println(headerNames);
+//        Member member = new Member();
+//        return memberService.findById("aa").isPresent()
+//                ? ResponseEntity.badRequest().build()
+//                : ResponseEntity.ok(TokenUtils.generateJwtToken(memberService.signUp(member)));
+//    }
 
 //    @GetMapping(value = "/findAll")
 //    public ResponseEntity findAll() {
