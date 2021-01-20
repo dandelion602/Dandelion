@@ -2,6 +2,9 @@
 .thumbs.db
 node_modules
 
+# Image files
+/src/assets/images
+
 # Quasar core related directories
 .quasar
 /dist
