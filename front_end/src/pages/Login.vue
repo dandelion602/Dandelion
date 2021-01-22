@@ -4,15 +4,14 @@
       <q-page class="flex bg-image flex-center">
         <q-card class="cardsize">
           <q-card-section>
-            <q-avatar size="103px" class="absolute-center shadow-10">
-              <img src="https://pbs.twimg.com/profile_images/810429579747676161/-RIQXV3z_400x400.jpg">
-            </q-avatar>
+
+
 
           </q-card-section>
           <q-card-section>
-            <div class="text-center q-pt-lg">
-              <div class="col text-h4 ellipsis">
-                Log in 페이지 입니다
+            <div class="text-center q-pt-lg q-px-xl">
+              <div class="col text-center text-h3 ellipsis">
+                Login                     
               </div>
             </div>
           </q-card-section>
@@ -43,14 +42,18 @@
                 color="primary"
                 @click=""
                 /> -->
-                <q-btn
+                <!-- <q-btn
                     key="email-button"
                     color="secondary"
                     icon="mail"
                     label="Email"
-                />
+                /> -->
               </div>
-              <q-btn label="등록" type="submit" color="primary"/>
+              <div>
+                <q-btn class="full-width flex-center"  label="로그인" type="submit" color="primary" size="xl" to="/" />
+                <hr class="q-my-md">
+                <q-btn class="full-width flex-center"  label="회원가입" type="submit" color="white" text-color="primary" size="xl" to="/register" />
+              </div>
             </q-form>
 
           </q-card-section>
@@ -68,7 +71,8 @@ import axios from "axios"
                 email:null,
                 password:null,
                 id: null,
-                pw: null
+                pw: null,
+                Login: true
             }
         },
         methods : {
@@ -102,5 +106,8 @@ import axios from "axios"
   .bg-image {
    background-image: linear-gradient(135deg, #295F2D 0%, #FFE76C 100%);
    /* background-image: linear-gradient(135deg, #7028e4 0%, #e5b2ca 100%); */
+  }
+  .cardsize{
+    width: 30em;
   }
 </style>
