@@ -25,12 +25,12 @@ const routes = [
     path: '/',
     component: () => import('layouts/Layout.vue'),
     children: [
-      { path: '', component: () => import('pages/Index.vue') },
-      { path: 'detail/:itemId', component: () => import('pages/Detail.vue') },
+      { path: '', name: 'PageIndex', component: () => import('pages/Index.vue') },
+      { path: 'detail/:itemId',name:'Detail', component: () => import('pages/Detail.vue') },
       { path: 'buy/:itemId', component: () => import('pages/Buy.vue') },
       { path: '/test', component: () => import('pages/Test.vue')},
       { path: '/stuff', component: () => import('pages/Stuff_upload.vue')},
-      { path: '/profile', component: () => import('pages/Profile.vue')},
+      { path: '/profile',name:'UserProfile', component: () => import('pages/Profile.vue')},
       { path: '/main2', component: () => import('pages/Main2.vue')},
       // { path: '/new_main',component: () => import('pages/asdfasdf.vue')}
     ]

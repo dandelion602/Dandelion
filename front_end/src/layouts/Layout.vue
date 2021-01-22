@@ -4,33 +4,33 @@
     <q-header elevated class="bg-primary text-white">
       <q-toolbar>
         <!-- <q-btn dense flat round icon="menu" @click="left = !left" /> -->
-        
-
-        <q-toolbar-title >
-          <q-avatar >
+        <span>
+        <q-toolbar-title class="q-ma-sm">
+          <q-avatar>
             <img src="https://cdn.quasar.dev/logo/svg/quasar-logo.svg"  >
           </q-avatar>
           DandeilOn
         </q-toolbar-title>
+        </span>
       </q-toolbar>
     </q-header>
 
     <q-drawer show-if-above v-model="left" side="left" bordered>
       <!-- drawer content -->
-              <q-scroll-area style="height: calc(100% - 150px); margin-top: 150px; border-right: 1px solid #ddd">
+        <q-scroll-area style="height: calc(100% - 150px); margin-top: 150px; border-right: 1px solid #ddd">
           <q-list padding>
             <!-- <q-item clickable v-ripple router :to="{name: 'main'}"> -->
-            <q-item clickable v-ripple :to="{ name: 'main' }">
+            <q-item clickable v-ripple :to="{ name: 'PageIndex' }">
               <q-item-section avatar>
                 <q-icon name="inbox" />
               </q-item-section>
 
               <q-item-section>
-                내 정보
+                메인페이지
               </q-item-section>
             </q-item>
 <!-- active 클릭 되있는 상태를 표시하려면 -->
-            <q-item clickable v-ripple>
+            <q-item clickable v-ripple :to="{ name: 'UserProfile'}">
               <q-item-section avatar>
                 <q-icon 
                 name="star"
@@ -38,7 +38,7 @@
               </q-item-section>
 
               <q-item-section>
-                거래 현황
+                마이 페이지
               </q-item-section>
             </q-item>
 
@@ -48,7 +48,7 @@
               </q-item-section>
 
               <q-item-section>
-                아 뭘넣지
+                거래 현황
               </q-item-section>
             </q-item>
 
@@ -85,9 +85,13 @@
         </div> -->
 
     </q-drawer>
-
+  
     <q-page-container>
+      <!-- route 되는 페이지를 로드시킨다 -->
+      <transition
+      :name="transitionName">
       <router-view />
+      </transition>
     </q-page-container>
 
   </q-layout>
@@ -98,7 +102,38 @@ export default {
   data () {
     return {
       left: false,
+      transitionName: 'slide-left'
+    }
+  },
+  watch:{
+    $route (to, from){
+      this.transitionName = to.name = 'PageIndex' ? 'slide-right' : 'slide-left'
+      // console.log(to.name)
     }
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.slide-left-enter-active,
+.slide-left-leave-active,
+.slide-right-enter-active,
+.slide-right-leave-active{
+  transition-duration: 0.5s;
+  transition-property: height, opacity, transform;
+  /* transition-timing-function: cubic-bezier(0.55,0,0.1,1); */
+  overflow: hidden;
+}
+
+.slide-left-enter,
+.slide-right-leave-active{
+  opacity:0;
+  transform: translate(100%,0);
+}
+
+.slide-left-leave-active,
+.slide-right-enter{
+  opacity: 0;
+  transform: translate(-100%,0);
+}
+</style>
