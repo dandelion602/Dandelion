@@ -54,6 +54,7 @@ export default {
         .get("api/")
         .then(res => {
           this.itemList = res.data;
+          console.log(res.data);
         })
         .catch(err => {
           console.log(err);
