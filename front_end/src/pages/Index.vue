@@ -51,7 +51,7 @@ export default {
     },
     item_list() {
       axios
-        .get("http://localhost:9090/")
+        .get("api/")
         .then(res => {
           this.itemList = res.data;
         })

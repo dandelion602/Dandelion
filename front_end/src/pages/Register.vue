@@ -81,7 +81,7 @@ import axios from "axios"
         methods :{
           onRegister(){
             axios
-              .post("http://localhost:9090/user/signUp",{
+              .post("http://localhost:9090/signUp",{
                 "id": this.id,
                 "pw": this.pw,
                 "name": "나닷!!",

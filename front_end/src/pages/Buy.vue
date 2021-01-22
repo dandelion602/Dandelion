@@ -169,7 +169,7 @@ export default {
 
     curItem_find() {
       axios
-        .get('http://localhost:9090/findBoardId/' + this.itemId)
+        .get('api/findBoardId/' + this.itemId)
         .then(res => {
           this.curItem = res.data;
         })

@@ -15,7 +15,9 @@ public class WebMvcConfig implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(jwtTokenInterceptor())
                 // 임의적으로 로그인,회원가입 제외하고는 토큰을 활용하는 페이지 모두를 집어넣어야함.
-                .addPathPatterns("/user/findAll");
+                .addPathPatterns("/*")
+                .excludePathPatterns("/signUp");
+
     }
 
     @Bean

@@ -85,7 +85,7 @@ export default {
     },
     items () {
       axios
-        .get('http://localhost:9090/')
+        .get('api/')
         .then(res => {
           this.itemList = res.data
           console.log(this.itemList)

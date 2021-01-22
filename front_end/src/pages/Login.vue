@@ -76,7 +76,7 @@ import axios from "axios"
             console.log(this.id)
             console.log(this.pw)
             axios
-              .post("api/user/login", {
+              .post("api/login", {
                 // "id": "dnjswnsakdmf@naver.com",
                 "id": this.id,
                 "pw": this.pw

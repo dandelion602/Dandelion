@@ -106,11 +106,11 @@ export default {
       file.forEach((file) => this.formData.append("files", file));
 
       axios
-        .post('http://localhost:9090/addBoard', formData)
+        .post('api/addBoard/', formData)
         .then(res => {
           console.log(res.data)
           axios
-            .post('http://localhost:9090/fileupload/', this.formData)
+            .post('api/fileupload/', this.formData)
             .then(res => {
               console.log(res);
             })

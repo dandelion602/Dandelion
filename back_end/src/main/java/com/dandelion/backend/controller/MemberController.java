@@ -17,7 +17,6 @@ import java.util.Enumeration;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping(value = "/user")
 @Log4j2
 @CrossOrigin(origins = "*")
 public class MemberController {

@@ -15,6 +15,29 @@ Vue.use(Vuex)
  * with the Store instance.
  */
 
+
+/*
+
+*/
+axios.interceptors.request.use(
+  (config) => {
+    let token = localStorage.getItem('access_token')
+
+    if (token) {
+      config.headers['authorization'] = token
+      console.log(config.headers['authorization'])
+    }
+
+    return config
+  },
+  (error) => {
+
+    console.log(config.headers)
+    return Promise.reject(error)
+  }
+)
+
+
 export default function (/* { ssrContext } */) {
   const Store = new Vuex.Store({
     state: {
@@ -50,7 +73,7 @@ export default function (/* { ssrContext } */) {
         // 로그인 -> 토큰 반환
         axios
           // .post('https://reqres.in/api/login',loginObj) // 두번째 인자는 파라메터(body)를 넣어줄수있다
-          .post('api/user/login',loginObj) // 두번째 인자는 파라메터(body)를 넣어줄수있다
+          .post('api/login',loginObj) // 두번째 인자는 파라메터(body)를 넣어줄수있다
           .then( res => {
             console.log(res);
             // 성공 시 token: 블라블라(실제로는 user_id 값을 받아옴)
