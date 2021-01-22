@@ -23,32 +23,45 @@ const onlyAuthUser = (to, from , next) => {
 const routes = [
   {
     path: '/',
+    component: () => import('pages/Login.vue'),
+    children: [
+    //   { path: '', name: 'PageIndex', component: () => import('pages/Index.vue') },
+    //   { path: 'detail/:itemId',name:'Detail', component: () => import('pages/Detail.vue') },
+    //   { path: 'buy/:itemId', component: () => import('pages/Buy.vue') },
+    //   { path: '/test', component: () => import('pages/Test.vue')},
+    //   { path: '/stuff', name: 'Stuff', component: () => import('pages/Stuff_upload.vue')},
+    //   { path: '/profile',name:'UserProfile', component: () => import('pages/Profile.vue')},
+    //   { path: '/main2', component: () => import('pages/Main2.vue')},
+    //   { path: '/myPage', name:'myPage', component: () => import('pages/MyPage.vue')}
+    //   // { path: '/new_main',component: () => import('pages/asdfasdf.vue')}
+    ]
+  },
+  {
+    path: '/main',
     component: () => import('layouts/Layout.vue'),
     children: [
       { path: '', name: 'PageIndex', component: () => import('pages/Index.vue') },
       { path: 'detail/:itemId',name:'Detail', component: () => import('pages/Detail.vue') },
       { path: 'buy/:itemId', component: () => import('pages/Buy.vue') },
       { path: '/test', component: () => import('pages/Test.vue')},
-      { path: '/stuff', component: () => import('pages/Stuff_upload.vue')},
+      { path: '/stuff', name: 'Stuff', component: () => import('pages/Stuff_upload.vue')},
       { path: '/profile',name:'UserProfile', component: () => import('pages/Profile.vue')},
       { path: '/main2', component: () => import('pages/Main2.vue')},
+      { path: '/myPage', name:'myPage', component: () => import('pages/MyPage.vue')}
       // { path: '/new_main',component: () => import('pages/asdfasdf.vue')}
     ]
+
   },
-  { 
-    path: '/login', 
-    component: () => import('pages/Login.vue')
-  },
-  { 
-    path: '/login2', 
+  {
+    path: '/login2',
     component: () => import('components/Login2.vue')
   },
-  { 
-    path: '/register', 
+  {
+    path: '/register',
     component: () => import('pages/Register.vue')
   },
-  { 
-    path: '/mainhome', 
+  {
+    path: '/mainhome',
     component: () => import('pages/Mainhome.vue')
   },
 
@@ -56,6 +69,6 @@ const routes = [
     path: '*',
     component: () => import('pages/Error404.vue')
   }
-] 
+]
 
 export default routes

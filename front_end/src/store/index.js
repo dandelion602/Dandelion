@@ -82,21 +82,22 @@ export default function (/* { ssrContext } */) {
             // 토큰을 로컬스토리지에 저장
             localStorage.setItem("access_token", token);// 속성 , value
             dispatch("getMemberInfo");
-  
+            this.$router.push('/main');
+
         })
         .catch(err => {
           alert("이메일과 비밀번호를 확인하세요");
           console.log(err);
           console.log(loginObj);
-        }) 
-        
+        })
+
       },
-  
+
       logout({ commit }){
         commit("logout")
         router.push({name: "home"})
       },
-  
+
       getMemberInfo({ commit }){
         // 로컬 스토리지에 저장되어 있는 토큰을 불러온다
         let token = localStorage.getItem("access_token")

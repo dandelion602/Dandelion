@@ -20,7 +20,7 @@
               <q-input
                 filled
                 v-model="id"
-                
+
                 hint="이메일(Id)를 입력해주세요"
                 lazy-rules
               />
@@ -49,9 +49,9 @@
 
               <div>
                 <!-- <q-btn label="Login" to="/" type="button" color="primary"/> -->
-                <q-btn label="등록" type="submit" color="primary"/>
+                <q-btn label="등록" type="submit" color="primary" />
               </div>
-              
+
             </q-form>
           </q-card-section>
         </q-card>
@@ -91,12 +91,15 @@ import axios from "axios"
                 "point": 0
               })
               .then(res => {
-                console.log(res)
+                console.log(res);
+                alert("회원가입이 완료되었습니다");
+                this.$router.push("/");
               })
               .catch(err => {
-                console.log(err)
+                console.log(err);
               })
-             
+
+
           }
         }
     }

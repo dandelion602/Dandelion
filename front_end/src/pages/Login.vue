@@ -11,13 +11,13 @@
           <q-card-section>
             <div class="text-center q-pt-lg q-px-xl">
               <div class="col text-center text-h3 ellipsis">
-                Login                     
+                Login
               </div>
             </div>
           </q-card-section>
           <q-card-section>
             <q-form
-              @submit="onSubmit"
+              @submit="login({id, pw})"
               class="q-gutter-md"
             >
               <q-input
@@ -34,11 +34,11 @@
                 label="pw"
                 lazy-rules
               />
-  
+
               <div>
-                <!-- <q-btn key="login-button" 
-                label="Login" 
-                type="button" 
+                <!-- <q-btn key="login-button"
+                label="Login"
+                type="button"
                 color="primary"
                 @click=""
                 /> -->
@@ -50,7 +50,7 @@
                 /> -->
               </div>
               <div>
-                <q-btn class="full-width flex-center"  label="로그인" type="submit" color="primary" size="xl" to="/" />
+                <q-btn class="full-width flex-center"  label="로그인" type="submit" color="primary" size="xl" />
                 <hr class="q-my-md">
                 <q-btn class="full-width flex-center"  label="회원가입" type="submit" color="white" text-color="primary" size="xl" to="/register" />
               </div>
@@ -64,42 +64,41 @@
 </template>
 
 <script>
-import axios from "axios"
-    export default {
-        data() {
-            return {
-                email:null,
-                password:null,
-                id: null,
-                pw: null,
-                Login: true
-            }
-        },
-        methods : {
-          onSubmit (){
-            console.log(this.id)
-            console.log(this.pw)
-            axios
-              .post("api/login", {
-                // "id": "dnjswnsakdmf@naver.com",
-                "id": this.id,
-                "pw": this.pw
-              })
-              .then(res => {
-                console.log(this.id)
-                console.log(this.pw)
-                
-                console.log(res)
-              })
-              .then(err => {
-                console.log(this.id)
-                console.log(this.pw)
-                console.log(err)
-              })
-          }
-        }
+// import axios from "axios"
+import { mapState, mapActions } from "vuex"
+export default {
+  data() {
+    return {
+      email:null,
+      password:null,
+      id: null,
+      pw: null
     }
+  },
+  computed:{
+    ...mapState(["isLogin", "isLoginError"])
+  },
+  methods : {
+    ...mapActions(["login"])
+    // onSubmit (){
+    //   console.log(this.email)
+    //   console.log(this.password)
+    //   axios
+    //     .post("https://reqres.in/api/login", {
+    //       "email": this.email,
+    //       "password": this.password
+    //     })
+    //     .then(res => {
+    //       console.log(res)
+    //     })
+    //     .then(err => {
+    //       console.log(err)
+    //     })
+    // }
+  }
+}
 </script>
+
 
 <style>
 

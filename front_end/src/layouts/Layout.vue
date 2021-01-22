@@ -30,9 +30,9 @@
               </q-item-section>
             </q-item>
 <!-- active 클릭 되있는 상태를 표시하려면 -->
-            <q-item clickable v-ripple :to="{ name: 'UserProfile'}">
+            <q-item clickable v-ripple :to="{ name: 'myPage'}">
               <q-item-section avatar>
-                <q-icon 
+                <q-icon
                 name="star"
                  />
               </q-item-section>
@@ -42,25 +42,16 @@
               </q-item-section>
             </q-item>
 
-            <q-item clickable v-ripple>
+            <q-item clickable v-ripple :to=" { name: 'Stuff' }">
               <q-item-section avatar>
-                <q-icon name="send" />
+                <q-icon name="send"/>
               </q-item-section>
 
               <q-item-section>
-                거래 현황
+                물품등록
               </q-item-section>
             </q-item>
 
-            <q-item clickable v-ripple>
-              <q-item-section avatar>
-                <q-icon name="drafts" />
-              </q-item-section>
-
-              <q-item-section>
-                아이디어가 필요해
-              </q-item-section>
-            </q-item>
           </q-list>
         </q-scroll-area>
 
@@ -76,7 +67,7 @@
             <div>@rstoenescu</div>
           </div>
         </q-img>
-        
+
         <!-- <div class="absolute-bottom">
           <q-avatar size="156px">
             <img src="https://static.thenounproject.com/png/641028-200.png">
@@ -85,7 +76,7 @@
         </div> -->
 
     </q-drawer>
-  
+
     <q-page-container>
       <!-- route 되는 페이지를 로드시킨다 -->
       <transition
