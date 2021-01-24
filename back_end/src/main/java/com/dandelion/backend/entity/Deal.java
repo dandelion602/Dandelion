@@ -1,6 +1,7 @@
 package com.dandelion.backend.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -29,7 +30,7 @@ public class Deal {
     private int buyerNumber;
 
     @JoinColumn(name = "bird_number", nullable = true)
-    private int birdNumber;
+    private Integer birdNumber;
 
     @JoinColumn(name = "locker_number")
     private int lockerNumber;

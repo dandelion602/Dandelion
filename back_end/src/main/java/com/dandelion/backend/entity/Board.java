@@ -1,5 +1,6 @@
 package com.dandelion.backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
@@ -25,7 +26,7 @@ public class Board {
     private String title;
 
     @JoinColumn(name = "member_number", nullable = false)
-    private int memberNumber = 1;
+    private int memberNumber;
 
     @Column(name = "view", nullable = false)
     private int view;

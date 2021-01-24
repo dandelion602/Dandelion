@@ -41,7 +41,7 @@ public class DealController {
         Member buyer = memberRepository.getOne(myMemberDetails.getNumber()); // 인터셉터로 member값을 가져와 적용
         Locker locker = lockerService.bringUnusedLocker(); // is_use = 0 인 locker를 찾아 1개의 locker의 정보를 가져옴
 
-        locker.setBoardNumber(board.getNumber()); // locker 에 board 연결 (board_number 값을 넣음)
+        locker.setBoardNumber(board); // locker 에 board 연결 (board_number 값을 넣음)
         locker.setIsUse(1); // locker is_use 값을 1로 변경 (locker 사용중으로 변경)
 
         board.setStatus(1); // board status 값을 1로 변경 (물품 등록 대기중으로 변경)
@@ -49,7 +49,7 @@ public class DealController {
         deal.setBoardNumber(board);
         deal.setSellerNumber(board.getMemberNumber());
         deal.setBuyerNumber(buyer.getNumber());
-        deal.setBirdNumber(1); // 멤버넘버 1 은 널값과 동일하다.
+//        deal.setBirdNumber(1); // 멤버넘버 1 은 널값과 동일하다.
         deal.setLockerNumber(locker.getNumber());
         deal.setIsPickup(0); // 처음엔 무조건 픽업으로 진행 IsPickup = 0 (추후에 버드 신청 가능)
         deal.setTempStatus(1); // status 1(물건등록 대기중)

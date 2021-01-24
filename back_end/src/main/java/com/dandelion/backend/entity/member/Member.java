@@ -28,13 +28,13 @@ public class Member {
     private String pw;
 
     @Column(name = "name", nullable = false, length = 50)
-    private String name = "이름이당";
+    private String name = "name";
 
     @Column(name = "phone", nullable = false, length = 50)
     private String phone;
 
     @Column(name = "address", nullable = false, length = 150)
-    private String address = "관악국...";
+    private String address = "seoul";
 
     @Column(name = "is_bird", nullable = false)
     @Enumerated(EnumType.ORDINAL)
