@@ -75,12 +75,13 @@ export default {
   },
   mounted() {
     // this.test();
-    this.memberModify();
+    // this.memberModify();
   },
   methods: {
     test() {
       axios
-        .get("api/findAll")
+        // .get("api/findAll")
+        .get("api/order-history/sell")
         .then(res => {
           console.log(res);
           this.userList = res.data.data;

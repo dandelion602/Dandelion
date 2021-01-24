@@ -45,13 +45,6 @@ public class MemberController {
     }
 
 
-    @PostMapping(value = "/member/test")
-    public Optional testReturn() {
-
-        return null;
-
-    }
-
     @PostMapping(value = "/member/modify")
     public Map<String, Integer> memberModify(@AuthenticationPrincipal MyMemberDetails myMemberDetails, HttpServletRequest request, HttpServletResponse response) throws IOException {
         // 회원정보 수정 요청시 받는 폼
