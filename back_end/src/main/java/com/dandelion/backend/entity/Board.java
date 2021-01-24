@@ -54,7 +54,6 @@ public class Board {
     @OneToMany(mappedBy = "boardNumber", targetEntity = Locker.class)
     private List<Locker> lockers;
 
-    @JsonManagedReference
     @OneToOne(mappedBy = "boardNumber", targetEntity = Deal.class)
     private Deal deal;
 }
