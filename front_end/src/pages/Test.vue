@@ -74,16 +74,17 @@ export default {
     };
   },
   mounted() {
-    // this.test();
+    this.test();
     // this.memberModify();
   },
   methods: {
     test() {
       axios
         // .get("api/findAll")
-        .get("api/order-history/sell")
+        .get("api/order-history/buy")
         .then(res => {
           console.log(res);
+          console.log(res.data[2].birdNumber)
           this.userList = res.data.data;
         })
         .catch(err => {

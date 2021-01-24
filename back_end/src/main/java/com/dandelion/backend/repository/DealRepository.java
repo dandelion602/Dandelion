@@ -11,10 +11,8 @@ import java.util.Optional;
 @Repository
 public interface DealRepository extends JpaRepository<Deal, Integer> {
 
-//
-//    @Query("select * from Deal  where sellerNumber = sellerNumber")
-//    List<Deal> findBy
+    List<Deal> findBysellerNumber(int sellerNumber);
 
-    List<Deal> findBySeller(int sellerNumber);
+    List<Deal> findBybuyerNumber(int buyerNumber);
 
 }

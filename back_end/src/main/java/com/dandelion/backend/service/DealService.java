@@ -17,12 +17,11 @@ public class DealService {
     DealRepository dealRepository;
 
     public List<Deal> findBySeller(int sellerNumber){
-
-        return dealRepository.findBySeller(sellerNumber);
+        return dealRepository.findBysellerNumber(sellerNumber);
     }
 
-
-
-
+    public List<Deal> findByBuyer(int buyerNumber){
+        return dealRepository.findBybuyerNumber(buyerNumber);
+    }
 
 }

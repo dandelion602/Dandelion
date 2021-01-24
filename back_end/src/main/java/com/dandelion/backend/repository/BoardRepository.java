@@ -14,4 +14,5 @@ public interface BoardRepository extends JpaRepository<Board, Integer> {
 
     @Query("select b from Board b where b.title like %?1%")
     List<Board> searchWithTitle(String title);
+
 }
