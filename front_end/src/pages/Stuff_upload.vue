@@ -114,7 +114,7 @@ export default {
             .then(res => {
               console.log(res);
               alert("등록이 완료되었습니다");
-              this.$router.push('/');
+              this.$router.push('/main');
             })
         })
         .catch(err => {

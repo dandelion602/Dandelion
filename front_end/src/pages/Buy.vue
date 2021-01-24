@@ -174,25 +174,20 @@ export default {
     },
     buy () {
       axios
-        .post('api/setBoardNumber/' + this.itemId)
+        .post('api/buy/' + this.itemId)
         .then(res => {
-
-          axios
-            .post('api/buy/' + this.itemId)
-            .then(res => {
-              alert("결제가 완료되었습니다");
-              this.$router.push("/main");
-            })
+          if (res.data === true) {
+            console.log(res.data)
+            alert("결제가 완료되었습니다")
+            this.$router.push('/main')
+          } else {
+            alert("잔액이 부족합니다")
+          }
         })
         .catch(err => {
           console.log(err)
         })
     }
-    // buyer_impo () {
-    //   axios
-    //     .
-    // }
-
   }
 }
 </script>
