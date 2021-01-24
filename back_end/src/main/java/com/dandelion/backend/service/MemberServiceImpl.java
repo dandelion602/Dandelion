@@ -30,5 +30,4 @@ public class MemberServiceImpl implements MemberService{
     public List<Member> findAll() {
         return memberRepository.findAll();
       }
-
 }

@@ -16,23 +16,16 @@ public class BaordServiceTest {
     BoardService boardService;
 
     @Test
-    public void findWithTitle() {
-        Board board1 = new Board();
-        Board board2 = new Board();
+    public void test () {
+        List<Board> b = boardService.findMyBoard(2);
+        System.out.println(b.get(0).getTitle());
+    }
 
-        board1.setTitle("this is new board1");
-        board2.setTitle("this is new board2");
-        board1.setContents("this is new content1");
-        board2.setContents("this is new content2");
-        board1.setPrice(2323);
-        board2.setPrice(2323);
-        boardService.save(board1);
-        boardService.save(board2);
-
-        List<Board> searchedBoards = boardService.searchWithTitle("new");
-        System.out.println("****************************************");
-        for (Board b: searchedBoards) {
-            System.out.println(b.getTitle());
-        }
+    @Test
+    public void test1 () {
+        Board b = boardService.getOne(13);
+        b.setStatus(1);
+        boardService.save(b);
+        System.out.println(b.getTitle());
     }
 }

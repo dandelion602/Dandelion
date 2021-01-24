@@ -106,6 +106,7 @@ CREATE TABLE deal
     `buyer_number`    INT          NOT NULL    COMMENT '구매자 회원번호',
     `bird_number`     INT          NULL        COMMENT 'BIRD 회원번호',
     `locker_number`   INT          NOT NULL    COMMENT '보관함 번호',
+    `create_date`     TIMESTAMP    NULL        COMMENT '거래 등록 시점',
     `receiving_date`  TIMESTAMP    NULL        COMMENT '입고 완료시점',
     `shipping_date`   TIMESTAMP    NULL        COMMENT '출고 완료시점',
     `delivery_date`   TIMESTAMP    NULL        COMMENT '배달 완료 시점',
@@ -135,5 +136,50 @@ ALTER TABLE deal
 ALTER TABLE deal
     ADD CONSTRAINT FK_deal_bird_number_member_number FOREIGN KEY (bird_number)
         REFERENCES member (number) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+
+-- 지점 보관함 1개 생성
+insert into locker_location(image, latitude, longitude , locker_count, name)
+values (null, 1.0, 1.0, 10, '관악1호점');
+
+
+-- 관악 1호점 보관함 10개 생성
+insert into locker(input_date, is_use, `size`, password, loc_number, board_number)
+values (null, 0, 10, '0000', 1, null);
+
+insert into locker(input_date, is_use, `size`, password, loc_number, board_number)
+values (null, 0, 10, '0000', 1, null);
+
+insert into locker(input_date, is_use, `size`, password, loc_number, board_number)
+values (null, 0, 10, '0000', 1, null);
+
+insert into locker(input_date, is_use, `size`, password, loc_number, board_number)
+values (null, 0, 10, '0000', 1, null);
+
+insert into locker(input_date, is_use, `size`, password, loc_number, board_number)
+values (null, 0, 10, '0000', 1, null);
+
+insert into locker(input_date, is_use, `size`, password, loc_number, board_number)
+values (null, 0, 10, '0000', 1, null);
+
+insert into locker(input_date, is_use, `size`, password, loc_number, board_number)
+values (null, 0, 10, '0000', 1, null);
+
+insert into locker(input_date, is_use, `size`, password, loc_number, board_number)
+values (null, 0, 10, '0000', 1, null);
+
+insert into locker(input_date, is_use, `size`, password, loc_number, board_number)
+values (null, 0, 10, '0000', 1, null);
+
+insert into locker(input_date, is_use, `size`, password, loc_number, board_number)
+values (null, 0, 10, '0000', 1, null);
+
+
+
+
+-- 깡통 member insert 입니다.
+
+insert into member(id, name, phone , password, is_bird, `point`, address)
+values ('깡통', ' ', ' ', ' ', 0, 0, ' ');
 
 

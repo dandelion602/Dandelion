@@ -52,6 +52,6 @@ public class Member {
     @OneToMany(mappedBy = "buyerNumber", targetEntity = Deal.class)
     private List<Deal> buyDeals = new ArrayList<>();
 
-    @OneToMany(mappedBy = "birdNumber", targetEntity = Deal.class)
-    private List<Deal> birdDeals = new ArrayList<>();
+//    @OneToMany(mappedBy = "birdNumber", targetEntity = Deal.class)
+//    private List<Deal> birdDeals = new ArrayList<>();
 }

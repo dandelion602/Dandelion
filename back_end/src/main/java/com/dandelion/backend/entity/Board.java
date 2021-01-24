@@ -1,5 +1,6 @@
 package com.dandelion.backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -7,6 +8,7 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.locks.Lock;
 
 
 @Getter
@@ -50,9 +52,10 @@ public class Board {
     @OneToMany(mappedBy = "boardNumber", targetEntity = ItemImage.class)
     private List<ItemImage> itemImages = new ArrayList<>();
 
-    @OneToOne(mappedBy = "boardNumber", targetEntity = Locker.class)
-    private Locker locker;
+//    @OneToMany(mappedBy = "boardNumber", targetEntity = Locker.class)
+//    private List<Locker> lockers;
 
+    @JsonManagedReference
     @OneToOne(mappedBy = "boardNumber", targetEntity = Deal.class)
     private Deal deal;
 }

@@ -42,7 +42,7 @@ const routes = [
     children: [
       { path: '', name: 'PageIndex', component: () => import('pages/Index.vue') },
       { path: 'detail/:itemId',name:'Detail', component: () => import('pages/Detail.vue') },
-      { path: 'buy/:itemId', component: () => import('pages/Buy.vue') },
+      { path: '/buy/:itemId', component: () => import('pages/Buy.vue') },
       { path: '/test', component: () => import('pages/Test.vue')},
       { path: '/stuff', name: 'Stuff', component: () => import('pages/Stuff_upload.vue')},
       { path: '/profile',name:'UserProfile', component: () => import('pages/Profile.vue')},

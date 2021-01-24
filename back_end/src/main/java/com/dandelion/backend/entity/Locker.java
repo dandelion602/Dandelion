@@ -27,16 +27,15 @@ public class Locker {
     @Column(name = "is_use", nullable = false)
     private int isUse;
 
-    @OneToOne
-    @JoinColumn(name = "board_number")
-    private Board boardNumber;
+//    @JoinColumn(name = "board_number", nullable = false)
+    @Column(name = "board_number")
+    private int boardNumber = 1;
 
     @Column(name = "password", length = 50)
     private String password;
 
     @Column(name = "input_date")
     private Date inputDate;
-
 
     @OneToMany(mappedBy = "lockerNumber", targetEntity = Deal.class)
     private List<Deal> deals = new ArrayList<>();

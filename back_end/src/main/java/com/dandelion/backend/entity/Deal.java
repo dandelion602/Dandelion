@@ -1,10 +1,11 @@
 package com.dandelion.backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.Date;
 
 @Getter
 @Setter
@@ -16,6 +17,7 @@ public class Deal {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int number;
 
+    @JsonBackReference
     @OneToOne
     @JoinColumn(name = "board_number", nullable = false)
     private Board boardNumber;
@@ -32,17 +34,24 @@ public class Deal {
     @JoinColumn(name = "locker_number")
     private int lockerNumber;
 
+    @Column(name = "create_date")
+    @Temporal(TemporalType.DATE)
+    private Date createDate = new Date();
+
     @Column(name = "receiving_date")
+    @Temporal(TemporalType.DATE)
     private Date receivingDate;
 
     @Column(name = "shipping_date")
+    @Temporal(TemporalType.DATE)
     private Date shippingDate;
 
     @Column(name = "delivery_date")
+    @Temporal(TemporalType.DATE)
     private Date deliveryDate;
 
     @Column(name = "is_pickup", nullable = false)
-    private int isPickup = 0;
+    private int isPickup;
 
     @Column(name = "temp_status", nullable = false)
     private int tempStatus;

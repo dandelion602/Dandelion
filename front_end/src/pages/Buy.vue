@@ -103,7 +103,7 @@
       </q-list>
     </section>
     <section class="text-center">
-      <q-btn size="xl" color="primary" class="q-px-xl q-my-md">결제하기</q-btn>
+      <q-btn size="xl" color="primary" class="q-px-xl q-my-md" @click="buy">결제하기</q-btn>
     </section>
   </q-page>
 </template>
@@ -140,6 +140,7 @@ export default {
         },
       ],
       curItem: null,
+      buyer: null,
       slide: 0
     }
   },
@@ -170,7 +171,28 @@ export default {
         .catch(err => {
           console.log(err);
         })
+    },
+    buy () {
+      axios
+        .post('api/setBoardNumber/' + this.itemId)
+        .then(res => {
+
+          axios
+            .post('api/buy/' + this.itemId)
+            .then(res => {
+              alert("결제가 완료되었습니다");
+              this.$router.push("/main");
+            })
+        })
+        .catch(err => {
+          console.log(err)
+        })
     }
+    // buyer_impo () {
+    //   axios
+    //     .
+    // }
+
   }
 }
 </script>

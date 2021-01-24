@@ -51,4 +51,9 @@ public class BoardService {
         return boardRepository.save(board);
 
     }
+
+    public List<Board> findMyBoard(int number) {
+        return boardRepository.findMyBoard(number);
+    }
+
 }

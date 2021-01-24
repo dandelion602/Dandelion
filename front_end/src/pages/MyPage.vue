@@ -1,7 +1,10 @@
 <template>
-  <div class="row">
-    <div class="col flex flex-center">
 
+  <div class="row">
+    <div class="title col">
+      <h2>마이 페이지</h2>
+    </div>
+    <div class="col flex flex-center">
       <q-btn to="/profile"
         size="100px"
         round
@@ -39,7 +42,12 @@ export default{
 </script>
 <style lang="sass" scoped>
 .row
-  height: 50em
+  height: 70em
+
+.title
+  display: flex
+  position: absolute
+  text-align: center
 
 
 </style>
