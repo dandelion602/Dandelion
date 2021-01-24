@@ -12,13 +12,5 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class LockerController {
 
-    @Autowired
-    LockerService lockerService;
 
-    @RequestMapping(value = "/setBoardNumber/{board_number}")
-    public Locker setBoardNumber(@PathVariable int board_number) {
-        Locker unsedLocker = lockerService.bringUnusedLocker();
-        unsedLocker.setBoardNumber(board_number);
-        return lockerService.save(unsedLocker);
-    }
 }

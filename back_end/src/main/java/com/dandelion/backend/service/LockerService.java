@@ -16,15 +16,7 @@ public class LockerService {
     LockerRepository lockerRepository;
 
     public Locker bringUnusedLocker() {
-        List<Locker> lockers = lockerRepository.findAll();
-        Locker locker = lockerRepository.getOne(1);
-
-        for (Locker l : lockers) {
-            if (l.getIsUse() == 0){
-                locker = l;
-            }
-        }
-        return locker;
+        return lockerRepository.unUsedLocker().get(0);
     }
 
     public Locker save (Locker locker) {
