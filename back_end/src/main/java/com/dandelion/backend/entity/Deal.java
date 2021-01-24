@@ -28,7 +28,7 @@ public class Deal {
     @JoinColumn(name = "buyer_number")
     private int buyerNumber;
 
-    @JoinColumn(name = "bird_number")
+    @JoinColumn(name = "bird_number", nullable = true)
     private int birdNumber;
 
     @JoinColumn(name = "locker_number")

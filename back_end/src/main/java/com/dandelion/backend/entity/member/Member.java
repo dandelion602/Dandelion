@@ -4,6 +4,7 @@ package com.dandelion.backend.entity.member;
 import com.dandelion.backend.entity.Board;
 import com.dandelion.backend.entity.Deal;
 import com.dandelion.backend.entity.role.MemberRole;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -52,6 +53,6 @@ public class Member {
     @OneToMany(mappedBy = "buyerNumber", targetEntity = Deal.class)
     private List<Deal> buyDeals = new ArrayList<>();
 
-//    @OneToMany(mappedBy = "birdNumber", targetEntity = Deal.class)
-//    private List<Deal> birdDeals = new ArrayList<>();
+    @OneToMany(mappedBy = "birdNumber", targetEntity = Deal.class)
+    private List<Deal> birdDeals = new ArrayList<>();
 }

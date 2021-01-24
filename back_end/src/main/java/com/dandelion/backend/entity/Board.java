@@ -52,8 +52,9 @@ public class Board {
     @OneToMany(mappedBy = "boardNumber", targetEntity = ItemImage.class)
     private List<ItemImage> itemImages = new ArrayList<>();
 
-//    @OneToMany(mappedBy = "boardNumber", targetEntity = Locker.class)
-//    private List<Locker> lockers;
+    @JsonManagedReference
+    @OneToOne(mappedBy = "boardNumber", targetEntity = Locker.class)
+    private Locker locker;
 
     @JsonManagedReference
     @OneToOne(mappedBy = "boardNumber", targetEntity = Deal.class)
