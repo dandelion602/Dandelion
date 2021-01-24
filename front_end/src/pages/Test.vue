@@ -16,6 +16,7 @@
               {{ member.text }}
             </q-card-section>
             <q-btn color="primary" @click="test"> Test</q-btn>
+            <q-btn color="primary" @click="memberModify"> 정보수정</q-btn>
           </q-card>
         </div>
       </div>
@@ -73,13 +74,33 @@ export default {
     };
   },
   mounted() {
-    this.test();
+    // this.test();
+    this.memberModify();
   },
   methods: {
     test() {
       axios
         .get("api/findAll")
         .then(res => {
+          console.log(res);
+          this.userList = res.data.data;
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    },
+    memberModify(){
+      axios
+        .post("api/member/modify",{
+          "pw": "aa",
+          "new_pw" : "aa",
+          "name" : "나다용",
+          "address" : "관악구",
+          "phone" : "01012341234"
+        })
+        .then(res => {
+
+          console.log(res.data.return);
           console.log(res);
           this.userList = res.data.data;
         })

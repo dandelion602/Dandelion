@@ -2,9 +2,11 @@ package com.dandelion.backend.controller;
 
 
 import com.dandelion.backend.entity.Board;
+import com.dandelion.backend.entity.member.MyMemberDetails;
 import com.dandelion.backend.repository.ImageRepository;
 import com.dandelion.backend.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Comparator;
@@ -28,7 +30,7 @@ public class BoardController {
     }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public Stream<Board> boardList() {
+    public Stream<Board> boardList(@AuthenticationPrincipal MyMemberDetails myMemberDetails) {
         return boardService.findAll().stream()
                 .sorted(Comparator.comparing(Board::getNumber).reversed());
     }
