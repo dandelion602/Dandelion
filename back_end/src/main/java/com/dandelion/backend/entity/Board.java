@@ -1,5 +1,6 @@
 package com.dandelion.backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -50,9 +51,10 @@ public class Board {
     @OneToMany(mappedBy = "boardNumber", targetEntity = ItemImage.class)
     private List<ItemImage> itemImages = new ArrayList<>();
 
-    @OneToOne(mappedBy = "boardNumber", targetEntity = Locker.class)
-    private Locker locker;
+    @OneToMany(mappedBy = "boardNumber", targetEntity = Locker.class)
+    private List<Locker> lockers;
 
+    @JsonManagedReference
     @OneToOne(mappedBy = "boardNumber", targetEntity = Deal.class)
     private Deal deal;
 }

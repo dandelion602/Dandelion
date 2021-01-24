@@ -78,7 +78,7 @@ export default {
   methods: {
     test() {
       axios
-        .get("https://reqres.in/api/users?page=2")
+        .get("api/findAll")
         .then(res => {
           console.log(res);
           this.userList = res.data.data;

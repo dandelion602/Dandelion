@@ -1,5 +1,6 @@
 package com.dandelion.backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,6 +17,7 @@ public class Deal {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int number;
 
+    @JsonBackReference
     @OneToOne
     @JoinColumn(name = "board_number", nullable = false)
     private Board boardNumber;

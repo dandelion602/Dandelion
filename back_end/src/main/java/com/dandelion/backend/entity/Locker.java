@@ -27,9 +27,8 @@ public class Locker {
     @Column(name = "is_use", nullable = false)
     private int isUse;
 
-    @OneToOne
     @JoinColumn(name = "board_number")
-    private Board boardNumber;
+    private int boardNumber;
 
     @Column(name = "password", length = 50)
     private String password;
