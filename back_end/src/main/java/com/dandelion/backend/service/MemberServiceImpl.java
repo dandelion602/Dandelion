@@ -1,5 +1,6 @@
 package com.dandelion.backend.service;
 
+import com.dandelion.backend.entity.form.MemberModifyForm;
 import com.dandelion.backend.entity.member.Member;
 import com.dandelion.backend.repository.MemberRepository;
 import lombok.NonNull;
@@ -24,6 +25,16 @@ public class MemberServiceImpl implements MemberService{
     @Override
     public Optional<Member> findById(String id) {
         return memberRepository.findById(id);
+    }
+
+    @Override
+    public Member memberUpdate(Member member, MemberModifyForm memberModifyForm) {
+        member.setPw(memberModifyForm.getNew_pw());
+        member.setName(memberModifyForm.getName());
+        member.setPhone(memberModifyForm.getPhone());
+        member.setAddress(memberModifyForm.getAddress());
+
+        return memberRepository.save(member);
     }
 
     @Override
