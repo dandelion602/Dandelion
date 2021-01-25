@@ -47,7 +47,13 @@ const routes = [
       { path: '/stuff', name: 'Stuff', component: () => import('pages/Stuff_upload.vue')},
       { path: '/profile',name:'UserProfile', component: () => import('pages/Profile.vue')},
       { path: '/main2', component: () => import('pages/Main2.vue')},
-      { path: '/myPage', name:'myPage', component: () => import('pages/MyPage.vue')}
+      { path: '/myPage', name:'myPage', component: () => import('pages/MyPage.vue')},
+
+      { path: '/bird',name:'bird', component: () => import('pages/Bird_menu.vue')},
+      { path: '/developer',name:'developer', component: () => import('pages/Developer.vue')},
+      { path: '/mydeal',name:'mydeal', component: () => import('pages/MyDeal.vue')},
+      { path: '/selldeal',name:'selldeal', component: () => import('pages/DealPage/SellDeal.vue')},
+      { path: '/buydeal',name:'buydeal', component: () => import('pages/DealPage/BuyDeal.vue')},
       // { path: '/new_main',component: () => import('pages/asdfasdf.vue')}
     ]
 
