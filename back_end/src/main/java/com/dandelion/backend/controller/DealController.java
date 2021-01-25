@@ -9,6 +9,7 @@ import com.dandelion.backend.repository.MemberRepository;
 import com.dandelion.backend.service.BoardService;
 import com.dandelion.backend.service.DealService;
 import com.dandelion.backend.service.LockerService;
+import com.dandelion.backend.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
@@ -55,7 +56,7 @@ public class DealController {
         deal.setTempStatus(1); // status 1(물건등록 대기중)
 
         // 구매자의 잔액확인
-        if (buyer.getPoint() > board.getPrice()) {
+        if (buyer.getPoint() >= board.getPrice()) {
             buyer.setPoint(buyer.getPoint() - board.getPrice());
             memberRepository.save(buyer);
             lockerService.save(locker);
@@ -104,6 +105,6 @@ public class DealController {
     public List<Deal> buy(@AuthenticationPrincipal MyMemberDetails myMemberDetails){
         Member member = myMemberDetails.getMember();
 
-        return dealService.findByBuyer(member.getNumber());
+        return dealService.findByBuyer2(member.getNumber());
     }
 }

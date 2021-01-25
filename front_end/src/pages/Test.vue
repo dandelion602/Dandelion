@@ -17,6 +17,7 @@
             </q-card-section>
             <q-btn color="primary" @click="test"> Test</q-btn>
           </q-card>
+          <q-btn color="brown-5" icon="exit_to_app" label="로그아웃" class="LogoutButton" @click="logout" />
         </div>
       </div>
 
@@ -86,6 +87,16 @@ export default {
         .catch(err => {
           console.log(err);
         });
+    },
+    logout() {
+      axios
+      .get("api/")
+      .then(res => {
+        console.log(res);
+        localStorage.removeItem('access_token');
+        location.reload();
+        this.$router("/");
+      })
     }
   }
 };

@@ -38,4 +38,8 @@ public class DealService {
     public List<Deal> findByBuyer(int buyerNumber){
         return dealRepository.findBybuyerNumber(buyerNumber);
     }
+
+    public List<Deal> findByBuyer2(int buyerNumber) {
+        return dealRepository.findByBuyerNumber2(buyerNumber);
+    }
 }

@@ -1,5 +1,7 @@
 package com.dandelion.backend.service;
 
+import com.dandelion.backend.entity.form.MemberModifyForm;
+import com.dandelion.backend.entity.form.PasswordModifyForm;
 import com.dandelion.backend.entity.member.Member;
 import com.dandelion.backend.repository.MemberRepository;
 import lombok.NonNull;
@@ -27,7 +29,19 @@ public class MemberServiceImpl implements MemberService{
     }
 
     @Override
+    public Member passwordUpdate(Member member, PasswordModifyForm passwordModifyForm) {
+        member.setPw(passwordModifyForm.getNew_password());
+
+        return memberRepository.save(member);
+    }
+
+    @Override
     public List<Member> findAll() {
         return memberRepository.findAll();
-      }
+    }
+
+    @Override
+    public Member save (Member member)  {
+        return memberRepository.save(member);
+    }
 }

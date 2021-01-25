@@ -176,10 +176,3 @@ values (null, 0, 10, '0000', 1, null);
 
 
 
-
--- 깡통 member insert 입니다.
-
-insert into member(id, name, phone , password, is_bird, `point`, address)
-values ('깡통', ' ', ' ', ' ', 0, 0, ' ');
-
-

@@ -1,7 +1,7 @@
 <template>
 
-  <div class="q-pa-md">
-    <q-form @submit="onSubmit" class="col-12 text-center self-center" >
+  <div class="q-pa-md" >
+    <q-form class="col-12 text-center self-center" @submit="onSubmit">
       <div class="col-12 text-center self-center">
         <h2 class="title"> 내 정보 수정 </h2>
       </div>
@@ -23,12 +23,6 @@
       <q-item class="col-lg-12 col-md-6 col-sm-12 col-xs-12">
         <q-item-section>
           <q-input v-model="user_details.id" label="id" stack-label :dense="dense" readonly />
-        </q-item-section>
-      </q-item>
-
-      <q-item class="col-lg-12 col-md-6 col-sm-12 col-xs-12">
-        <q-item-section>
-          <q-input type="password" v-model="user_details.password" label="password" stack-label :dense="dense" readonly/>
         </q-item-section>
       </q-item>
 
@@ -54,23 +48,15 @@
 
       <!--      <input type="file" ref="uploadImage" @change="onImageUpload()" class="form-control" required>-->
       <!--  -->
-      <div>
-        <q-btn label="수정하기" type="submit" color="primary"/>
+      <div class="">
+        <q-btn label="수정하기" type="submit" color="primary" />
+      </div>
+      <div class="">
+        <q-btn label="비밀번호 변경" type="submit" color="primary" :to="'/modifyPassword'"/>
       </div>
     </q-form>
 
-    <q-card v-if="submitResult.length > 0" flat bordered class="q-mt-md bg-grey-2">
-      <q-card-section>Submitted form contains the following formData (key = value):</q-card-section>
-      <q-separator />
-      <q-card-section class="row q-gutter-sm items-center">
-        <div
-          v-for="(item, index) in submitResult"
-          :key="index"
-          class="q-px-sm q-py-xs bg-grey-8 text-white rounded-borders text-center text-no-wrap"
-        >{{ item.name }} = {{ item.value }}
-        </div>
-      </q-card-section>
-    </q-card>
+
 
   </div>
 </template>
@@ -79,52 +65,51 @@ import axios from 'axios'
 export default {
   data () {
     return {
-      name: '',
-      submitResult: [],
-      text: '',
-      textarea: '',
-      ph: '',
-      price:'',
-      formData: null,
-
       dense : false,
 
-      user_details: {
-        id: "nadaYoung",
-        password: "nada",
-        name: "나다용",
-        phone: "010-1234-1234",
-        address: "관악구"
-      },
-      password_dict: {}
+      user_details: null
+        // number: "nadaYoung",
+        // password: "nada",
+        // name: "나다용",
+        // phone: "010-1234-1234",
+        // address: "관악구"
+      ,
+      password_dict: {
+        current_password: null,
+        new_password: null,
+        confirm_new_password: null
+      }
     }
   },
+  mounted() {
+    this.myProfile();
+  },
+
   methods: {
-    onSubmit() {
-      const formData = {
-        title: this.name,
-        price: this.price,
-        contents: this.textarea
-      }
-
-      let file = this.$refs.uploadImage.files;
-      this.formData = new FormData();
-      file.forEach((file) => this.formData.append("files", file));
-
+    myProfile () {
       axios
-        .post('http://localhost:9090/addBoard', formData)
+        .get('api/member/view')
         .then(res => {
-          console.log(res.data)
-          axios
-            .post('http://localhost:9090/fileupload/', this.formData)
-            .then(res => {
-              console.log(res);
-            })
+          this.user_details = res.data;
+          console.log(this.user_details);
         })
         .catch(err => {
           console.log(err);
         })
+    },
+    onSubmit () {
+      axios
+        .post('api/member/modify/myProfile', this.user_details)
+        .then(res => {
+          alert("수정되었습니다");
+          this.$router.push('/myPage');
+        })
+        .catch(err => {
+          console.log(err);
+        })
+
     }
+
   }
 }
 </script>
@@ -147,6 +132,11 @@ export default {
 }
 .q-gutter-md{
 
+}
+
+
+.card-bg {
+  background-color: #162b4d;
 }
 
 </style>
