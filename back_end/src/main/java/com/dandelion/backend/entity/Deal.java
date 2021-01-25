@@ -8,6 +8,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Getter
@@ -39,19 +40,19 @@ public class Deal {
     private int lockerNumber;
 
     @Column(name = "create_date")
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date createDate = new Date();
 
     @Column(name = "receiving_date")
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date receivingDate;
 
     @Column(name = "shipping_date")
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date shippingDate;
 
     @Column(name = "delivery_date")
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date deliveryDate;
 
     @Column(name = "is_pickup", nullable = false)
