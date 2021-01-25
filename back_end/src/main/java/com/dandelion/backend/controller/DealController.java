@@ -94,5 +94,16 @@ public class DealController {
         return dealService.receivingFinish(board_number);
     }
 
+    @GetMapping(value = "order-history/sell")
+    public List<Deal> sell(@AuthenticationPrincipal MyMemberDetails myMemberDetails){
+        Member member = myMemberDetails.getMember();
+        return dealService.findBySeller(member.getNumber());
+    }
 
+    @GetMapping(value = "order-history/buy")
+    public List<Deal> buy(@AuthenticationPrincipal MyMemberDetails myMemberDetails){
+        Member member = myMemberDetails.getMember();
+
+        return dealService.findByBuyer(member.getNumber());
+    }
 }

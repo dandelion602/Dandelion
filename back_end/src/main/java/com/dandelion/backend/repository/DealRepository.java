@@ -15,4 +15,7 @@ public interface DealRepository extends JpaRepository<Deal, Integer> {
     @Query(value = "SELECT * from deal d where d.board_number = :number", nativeQuery = true)
     Deal serchByBoardNumber (@Param("number")int number);
 
+    List<Deal> findBysellerNumber(int sellerNumber);
+
+    List<Deal> findBybuyerNumber(int buyerNumber);
 }

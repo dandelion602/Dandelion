@@ -57,7 +57,7 @@ public class Board {
     @OneToOne(mappedBy = "boardNumber", targetEntity = Locker.class)
     private Locker locker;
 
-    @JsonManagedReference
+//    @JsonManagedReference
     @OneToOne(mappedBy = "boardNumber", targetEntity = Deal.class)
     private Deal deal;
 }

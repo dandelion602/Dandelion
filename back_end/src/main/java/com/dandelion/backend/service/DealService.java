@@ -30,4 +30,12 @@ public class DealService {
         return dealRepository.save(deal);
 
     }
+
+    public List<Deal> findBySeller(int sellerNumber){
+        return dealRepository.findBysellerNumber(sellerNumber);
+    }
+
+    public List<Deal> findByBuyer(int buyerNumber){
+        return dealRepository.findBybuyerNumber(buyerNumber);
+    }
 }
