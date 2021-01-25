@@ -46,7 +46,7 @@ export default {
 
   methods: {
     onDetail(itemId) {
-      this.$router.push(`main/detail/${itemId}`);
+      this.$router.push(`/main/detail/${itemId}`);
     },
     numberWithCommas(num) {
       return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");

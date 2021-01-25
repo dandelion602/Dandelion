@@ -1,10 +1,12 @@
 package com.dandelion.backend.service;
 
+import com.dandelion.backend.entity.Board;
 import com.dandelion.backend.entity.Deal;
 import com.dandelion.backend.repository.DealRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -24,11 +26,9 @@ public class DealService {
     }
 
     public Deal receivingFinish (int board_number) {
-
-        Deal deal = dealRepository.serchByBoardNumber(board_number);
+        Deal deal = dealRepository.findByBoardNumber(board_number);
         deal.setReceivingDate(new Date());
         return dealRepository.save(deal);
-
     }
 
     public List<Deal> findBySeller(int sellerNumber){
@@ -39,7 +39,7 @@ public class DealService {
         return dealRepository.findBybuyerNumber(buyerNumber);
     }
 
-    public List<Deal> findByBuyer2(int buyerNumber) {
-        return dealRepository.findByBuyerNumber2(buyerNumber);
+    public Deal findDealWithBoard(Board board) {
+        return dealRepository.findByBoardNumber(board.getNumber());
     }
 }

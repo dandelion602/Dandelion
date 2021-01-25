@@ -22,8 +22,19 @@
             <div class="text-h4 q-mb-none q-mt-md">{{curItem.title}}</div>
             <div class="text-subtitle1 q-mt-sm">{{curItem.contents}}</div>
             <div class="text-h4 q-mt-xl text-right">{{ numberWithCommas(curItem.price) }}원</div>
-            <div class="text-right">
+            <div class="text-right" v-if="curItem.status === 0">
               <q-btn color="primary q-mt-xl " :to="`/buy/${curItem.number}`">구매하기</q-btn>
+            </div>
+            <div class="text-right" v-else-if="curItem.status === 1">
+              <q-btn color="primary q-mt-xl " @click="in_stock" >물건 등록 완료</q-btn>
+              <q-btn color="primary q-mt-xl " @click="canceled">취소하기</q-btn>
+            </div>
+            <div class="text-right" v-else-if="curItem.status === 3">
+              <q-btn color="primary q-mt-xl " @click="pickUpComplete">구매자 픽업 완료</q-btn>
+              <q-btn color="primary q-mt-xl " @click="birdMatching" >버드 신청</q-btn>
+            </div>
+            <div class="text-right" v-else-if="curItem.status === 5">
+              <q-btn color="primary q-mt-xl " >버드 매칭 </q-btn>
             </div>
           </div>
         </div>
@@ -83,6 +94,7 @@ export default {
     numberWithCommas(num) {
       return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     },
+    // item 값 다 가져오기
     items () {
       axios
         .get('/api')
@@ -93,7 +105,56 @@ export default {
         .catch(err => {
           console.log(err)
         })
-    }
+    },
+    // 물건 등록 완료
+    in_stock () {
+      axios
+        .get('api/inStock/' + this.curItem.number)
+        .then(res => {
+          alert(res.data);
+          this.$router.push('/mydeal');
+        })
+        .catch(err => {
+          console.log(err);
+        })
+    },
+    // 취소하기
+    canceled () {
+      axios
+        .get('api/canceled/' + this.curItem.number)
+        .then(res => {
+          alert("판매가 취소되었습니다");
+          this.$router.push('/mydeal');
+        })
+        .catch(err => {
+          console.log(err);
+        })
+    },
+    //버드 매칭
+    birdMatching () {
+      axios
+        .get('api/birdMatching/' + this.curItem.number)
+        .then(res => {
+          alert("버드 신청이 완료되었습니다");
+          this.$router.push('/main');
+        })
+        .catch(err => {
+          console.log(err);
+        })
+    },
+    // 픽업 거래 완료
+    pickUpComplete () {
+      axios
+        .get('api/pickUpComplete/' + this.curItem.number)
+        .then(res => {
+          alert("거래가 완료되었습니다");
+          this.$router.push('/main');
+        })
+        .catch(err => {
+          console.log(err);
+        })
+    },
+    //
   }
 
 }

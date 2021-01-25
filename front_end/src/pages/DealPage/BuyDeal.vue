@@ -1,5 +1,6 @@
 <template>
   <div class="q-pa-md">
+
     <q-table
       :grid="$q.screen.xs"
       title="구매내역"
