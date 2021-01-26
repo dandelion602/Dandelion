@@ -58,9 +58,6 @@ public class BoardController {
     }
 
 
-
-
-
     //내가 등록한 게시판 찾기
     @RequestMapping(value = "/board/findMyBoard", method = RequestMethod.GET)
     public List<Board> findMyBoard(@AuthenticationPrincipal MyMemberDetails myMemberDetails) {

@@ -55,7 +55,7 @@ export default {
       axios
         .get("api/")
         .then(res => {
-          this.itemList = res.data;
+          this.itemList = res.data.filter(data => data.status === 0);
           console.log(res.data);
         })
         .catch(err => {

@@ -44,7 +44,9 @@
                   />
                 </template>
               </q-input>
+              <q-input v-model="name" filled type="name" hint="이름" />
               <q-input v-model="phone" filled type="phone" hint="전화번호" />
+              <q-input v-model="address" filled type="address" hint="주소" />
               <!-- <q-input v-model="date" filled type="date" hint="Native date" /> -->
 
               <div>
@@ -81,11 +83,11 @@ import axios from "axios"
         methods :{
           onRegister(){
             axios
-              .post("http://localhost:9090/signUp",{
+              .post("api/signUp",{
                 "id": this.id,
                 "pw": this.pw,
-                "name": "나닷!!",
-                "address": "이것이주소닷",
+                "name": this.name,
+                "address": this.address,
                 "isBird": 0,
                 "phone": this.phone,
                 "point": 0

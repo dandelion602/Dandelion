@@ -34,12 +34,12 @@
               <q-btn color="primary q-mt-xl " @click="birdMatching" >버드 신청</q-btn>
             </div>
             <div class="text-right" v-else-if="curItem.status === 5">
-              <q-btn color="primary q-mt-xl " >버드 매칭 </q-btn>
+              <q-btn color="primary q-mt-xl " @click="bridMatched" >버드 매칭 </q-btn>
             </div>
             <div class="text-right" v-else-if="curItem.status === 6">
               <q-btn color="primary q-mt-xl " @click="birdComplete" >배달 완료</q-btn>
             </div>
-            <div class="text-right" v-else-if="curItem.status === 7">
+            <div class="text-right" v-else-if="curItem.status === 7 || curItem.status === 4">
               <q-btn color="primary q-mt-xl " >거래 완료</q-btn>
             </div>
           </div>
@@ -47,29 +47,26 @@
 
 
       </div>
-<!--      <div v-if="curItem.status === 0">-->
-        <div class="col-3">
-          <q-list bordered separator class="cardArea ">
-            <q-item clickable v-ripple v-for="item in itemList" :key="item.number" @click="onDetail(item.number)">
-              <q-item-section avatar>
-                <q-avatar rounded>
-                  <q-img
-                    :src="require('../assets/images/' + item.itemImages[0].fileName + item.itemImages[0].format)"
-                    :ratio="1"
-                  />
-                </q-avatar>
-              </q-item-section>
-              <q-item-section>
-                {{item.title}}
-                <q-item-label caption>Caption</q-item-label>
-              </q-item-section>
+      <div class="col-3">
+        <q-list bordered separator class="cardArea ">
+          <q-item clickable v-ripple v-for="item in itemList" :key="item.number" @click="onDetail(item.number)">
+            <q-item-section avatar>
+              <q-avatar rounded>
+                <q-img
+                  :src="require('../assets/images/' + item.itemImages[0].fileName + item.itemImages[0].format)"
+                  :ratio="1"
+                />
+              </q-avatar>
+            </q-item-section>
+            <q-item-section>
+              {{item.title}}
+              <q-item-label caption>Caption</q-item-label>
+            </q-item-section>
 
-              <q-item-section side>{{ numberWithCommas(item.price) }}원</q-item-section>
-            </q-item>
-          </q-list>
-        </div>
-<!--      </div>-->
-<!--      <div v-else-if="curItem.status > 0"></div>-->
+            <q-item-section side>{{ numberWithCommas(item.price) }}원</q-item-section>
+          </q-item>
+        </q-list>
+      </div>
     </div>
   </q-page>
 </template>
@@ -98,7 +95,7 @@ export default {
   },
   methods : {
     onDetail (itemId) {
-      this.$router.push(`/main/detail/${itemId}`)
+      this.$router.push(`/main/bird_detail/${itemId}`)
     },
     numberWithCommas(num) {
       return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -106,9 +103,9 @@ export default {
     // item 값 다 가져오기
     items () {
       axios
-        .get('/api')
+        .get('/api/board/findMyBoard')
         .then(res => {
-          this.itemList = res.data.filter(data => data.status === 0)
+          this.itemList = res.data
           console.log(this.itemList)
         })
         .catch(err => {
@@ -163,19 +160,19 @@ export default {
           console.log(err);
         })
     },
-    //버드 매칭
-    // bridMatched() {
-    //   axios
-    //     .get('api/birdMatched/' + this.curItem + '/' + **bridNumber** )
-    //     .then(res => {
-    //       alert("매칭되었습니다");
-    //       this.$router.push('');
-    //     })
-    //     .catch(err => {
-    //       console.log(err);
-    //     })
-    // }
-    //버드 배달 완료  //deal 에 bird 넘버가 안들어가서 오류가 남
+    // 버드 매칭
+    bridMatched() {
+      axios
+        .get('api/birdMatched/' + this.curItem.number)
+        .then(res => {
+          alert("매칭되었습니다");
+          this.$router.push('/bird');
+        })
+        .catch(err => {
+          console.log(err);
+        })
+    },
+    // 버드 배달 완료  //deal 에 bird 넘버가 안들어가서 오류가 남
     birdComplete () {
       axios
         .get('api/birdComplete/' + this.curItem.number)

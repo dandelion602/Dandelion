@@ -18,31 +18,4 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 class DealRepositoryTest {
 
-    @Autowired
-    DealService dealService;
-    @Autowired
-    BoardService boardService;
-    @Autowired
-    DealRepository dealRepository;
-
-    @Test
-    public void dealTest() {
-//        Deal deal = dealService.findDealWithBoard(boardService.getOne(3));
-        System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%");
-//        System.out.println(deal.getNumber());
-        System.out.println(new Date(System.currentTimeMillis()));
-
-
-    }
-
-    @Test
-    public  void test1() {
-        List<Deal> d = dealRepository.findBybuyerNumber(1);
-        for (Deal deal : d) {
-            System.out.println(deal.getNumber());
-        }
-    }
-
-
-
 }

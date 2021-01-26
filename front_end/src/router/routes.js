@@ -55,7 +55,8 @@ const routes = [
       { path: '/mydeal',name:'mydeal', component: () => import('pages/MyDeal.vue')},
       { path: '/selldeal',name:'selldeal', component: () => import('pages/DealPage/SellDeal.vue')},
       { path: '/buydeal',name:'buydeal', component: () => import('pages/DealPage/BuyDeal.vue')},
-      { path: '/modifyPassword', name:'modifyPassword', component: () => import('pages/modifyPassword.vue')}
+      { path: '/modifyPassword', name:'modifyPassword', component: () => import('pages/modifyPassword.vue')},
+      { path: '/selldetail/:itemId', name:'SellDetail', component: () => import('pages/SellDetail.vue')}
       // { path: '/new_main',component: () => import('pages/asdfasdf.vue')}
     ]
 

@@ -9,12 +9,4 @@ import javax.servlet.ServletContext;
 @SpringBootTest
 class BoardApplicationTests {
 
-    @Autowired
-    public ServletContext context;
-
-    @Test
-    void contextLoads() {
-
-    }
-
 }
