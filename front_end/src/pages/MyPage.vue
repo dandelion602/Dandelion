@@ -2,7 +2,13 @@
 
   <div class="row">
     <div class="title col">
-      <h2>마이 페이지</h2>
+      <div class="row q-pt-xl ">
+        <div class="col ">
+            <div class="text-h2 mytitle">
+              마이 페이지
+            </div>
+        </div>
+      </div>
     </div>
     <div class="col flex flex-center">
       <q-btn to="/profile"
@@ -19,6 +25,7 @@
     </div>
     <div class="col flex flex-center">
       <q-btn
+        to="/mydeal"
         size="100px"
         round
         icon="shopping_cart"
@@ -47,6 +54,9 @@ export default{
 .title
   display: flex
   position: absolute
+  text-align: center
+
+.mytitle
   text-align: center
 
 

@@ -42,13 +42,31 @@
               </q-item-section>
             </q-item>
 
-            <q-item clickable v-ripple :to=" { name: 'Stuff' }">
+            <q-item clickable v-ripple :to="{name: 'Stuff'}">
               <q-item-section avatar>
-                <q-icon name="send"/>
+                <q-icon name="drafts" />
               </q-item-section>
 
               <q-item-section>
-                물품등록
+                상품 등록
+              </q-item-section>
+            </q-item>
+
+            <q-item clickable v-ripple :to="{ name: 'bird' }">
+              <q-item-section avatar>
+                <q-icon name="drafts" />
+              </q-item-section>
+              <q-item-section>
+                버드페이지
+              </q-item-section>
+            </q-item>
+
+            <q-item class="float-" clickable v-ripple :to="{ name: 'developer' }">
+              <q-item-section avatar>
+                <q-icon name="drafts" />
+              </q-item-section>
+              <q-item-section>
+                제작진
               </q-item-section>
             </q-item>
 

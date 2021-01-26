@@ -18,4 +18,5 @@ public interface DealRepository extends JpaRepository<Deal, Integer> {
     List<Deal> findBysellerNumber(int sellerNumber);
 
     List<Deal> findBybuyerNumber(int buyerNumber);
+
 }

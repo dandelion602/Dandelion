@@ -1,11 +1,15 @@
 <template>
   <div class="q-pa-md" >
     <q-form @submit="onSubmit" class="q-gutter-md">
+            <q-card class="my-card">
+        <q-card-section>
       <h2 class="title">상품 등록</h2>
+      <q-separator/>
       <!-- 사진업로드 -->
 
       <!-- 이름 작성 -->
-      <h5> 상품명 </h5>
+      <div class="text-h4 q-my-md">상품명</div>
+
       <q-input
         name="name"
         v-model="name"
@@ -18,7 +22,7 @@
       label="위로 할까 아래로 할까 고민이네 뭐하지"
       :dense="dense
       "/> -->
-      <h5> 가격 </h5>
+      <div class="text-h4 q-my-md">가격</div>
       <q-input
         v-model.number="price"
         type='number'
@@ -26,7 +30,7 @@
         filled
       />
 
-      <h5>상품설명</h5>
+      <div class="text-h4 q-my-md">상품설명</div>
       <q-input
         v-model="textarea"
         style="max-width: 600px"
@@ -34,7 +38,7 @@
         type="textarea"
         label="상품설명"
       />
-      <h5> 이미지 업로드 </h5>
+      <div class="text-h4 q-my-md">이미지 업로드</div>
       <!-- <div class="q-gutter-md row items-start">
         <q-input
           @input="val => { file = val[0] }"
@@ -56,12 +60,15 @@
 
       <!--      <input type="file" ref="uploadImage" @change="onImageUpload()" class="form-control" required>-->
       <!--  -->
-      <div>
-        <q-btn label="등록" type="submit" color="primary"/>
+      <div class="q-mt-md">
+        <q-separator />
+        <q-btn label="등록" type="submit" color="primary" class="full-width" size="xl"/>
       </div>
+        </q-card-section>
+      </q-card>
     </q-form>
 
-    <q-card v-if="submitResult.length > 0" flat bordered class="q-mt-md bg-grey-2">
+    <!-- <q-card v-if="submitResult.length > 0" flat bordered class="q-mt-md bg-grey-2">
       <q-card-section>Submitted form contains the following formData (key = value):</q-card-section>
       <q-separator />
       <q-card-section class="row q-gutter-sm items-center">
@@ -72,7 +79,7 @@
         >{{ item.name }} = {{ item.value }}
         </div>
       </q-card-section>
-    </q-card>
+    </q-card> -->
 
   </div>
 </template>
@@ -127,13 +134,13 @@ export default {
 </script>
 <style lang="scss" scoped>
 .q-pa-md{
-  padding: 15px 40%;
+  padding: 15px 30%;
   max-width: 50%;
   height: 100vhs;
   display: flex;
 
   .q-input{
-    max-width: 600px;
+    max-width: 500px;
   }
 }
 .title{
