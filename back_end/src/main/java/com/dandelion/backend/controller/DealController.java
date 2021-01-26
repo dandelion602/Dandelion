@@ -180,7 +180,7 @@ public class DealController {
 
         board.setStatus(6);
         deal.setTempStatus(6);
-        deal.setShippingDate(new Date());
+        deal.setShippingDate(new Date(System.currentTimeMillis()));
         locker.setIsUse(0);
         locker.setBoardNumber(null);
         locker.setInputDate(null);
