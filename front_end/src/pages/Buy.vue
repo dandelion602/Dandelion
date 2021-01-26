@@ -31,52 +31,52 @@
             <h4 class="q-mb-sm">구매자 정보</h4>
             <q-list bordered class="rounded-borders">
               <q-item>
-                <q-item-section class="col-2 gt-sm">이름</q-item-section>
-                <q-item-section><q-input v-model="name" /></q-item-section>
+                <q-item-section class="col-2 gt-sm" >이름</q-item-section>
+                <q-item-section><q-input v-model="buyer.name" readonly/></q-item-section>
               </q-item>
               <q-item>
-                <q-item-section class="col-2 gt-sm">이메일</q-item-section>
-                <q-item-section><q-input v-model="email" /></q-item-section>
+                <q-item-section class="col-2 gt-sm">아이디</q-item-section>
+                <q-item-section><q-input v-model="buyer.id" readonly/></q-item-section>
               </q-item>
               <q-item>
                 <q-item-section class="col-2 gt-sm">휴대전화</q-item-section>
-                <q-item-section><q-input v-model="phone" /></q-item-section>
+                <q-item-section><q-input v-model="buyer.phone" readonly/></q-item-section>
               </q-item>
             </q-list>
           </section>
-          <section>
-            <h4 class="q-mb-sm">구매 방법</h4>
-            <q-tabs
-              v-model="payMethod"
-              inline-label
-              class="bg-purple text-white shadow-2"
-            >
-              <q-tab name="pickup" icon="archive" label="픽업" />
-              <q-tab name="connector" icon="pedal_bike" label="커넥터" />
-            </q-tabs>
-            <div v-show="payMethod == 'pickup'" class="q-px-sm">
-              <h5 class="q-my-sm">보관소 위치</h5>
-              <q-select v-model="pickupSpace" :options="pickupOptions" label="보관소 위치를 선택하세요." />
-              <div v-if="pickupSpace" class="text-subtitle1 q-mt-sm">{{pickupSpace.desc}}</div>
-            </div>
-            <div v-show="payMethod == 'connector'" class="q-px-sm">
-              <h5 class="q-my-sm">배송 정보</h5>
-              <q-list bordered class="rounded-borders">
-                <q-item>
-                  <q-item-section class="col-2 gt-sm">상품 가격</q-item-section>
-                  <q-item-section><q-input v-model="addr" label="주소를 입력하세요" /></q-item-section>
-                </q-item>
-                <q-item>
-                  <q-item-section class="col-2 gt-sm">연락처</q-item-section>
-                  <q-item-section><q-input v-model="phone" /></q-item-section>
-                </q-item>
-                <q-item>
-                  <q-item-section class="col-2 gt-sm">요청사항</q-item-section>
-                  <q-item-section><q-input v-model="request" label="예) 문 앞에 놓아주세요" /></q-item-section>
-                </q-item>
-              </q-list>
-            </div>
-          </section>
+<!--          <section>-->
+<!--            <h4 class="q-mb-sm">구매 방법</h4>-->
+<!--            <q-tabs-->
+<!--              v-model="payMethod"-->
+<!--              inline-label-->
+<!--              class="bg-purple text-white shadow-2"-->
+<!--            >-->
+<!--              <q-tab name="pickup" icon="archive" label="픽업" />-->
+<!--              <q-tab name="connector" icon="pedal_bike" label="커넥터" />-->
+<!--            </q-tabs>-->
+<!--            <div v-show="payMethod == 'pickup'" class="q-px-sm">-->
+<!--              <h5 class="q-my-sm">보관소 위치</h5>-->
+<!--              <q-select v-model="pickupSpace" :options="pickupOptions" label="보관소 위치를 선택하세요." />-->
+<!--              <div v-if="pickupSpace" class="text-subtitle1 q-mt-sm">{{pickupSpace.desc}}</div>-->
+<!--            </div>-->
+<!--            <div v-show="payMethod == 'connector'" class="q-px-sm">-->
+<!--              <h5 class="q-my-sm">배송 정보</h5>-->
+<!--              <q-list bordered class="rounded-borders">-->
+<!--                <q-item>-->
+<!--                  <q-item-section class="col-2 gt-sm">상품 가격</q-item-section>-->
+<!--                  <q-item-section><q-input v-model="addr" label="주소를 입력하세요" /></q-item-section>-->
+<!--                </q-item>-->
+<!--                <q-item>-->
+<!--                  <q-item-section class="col-2 gt-sm">연락처</q-item-section>-->
+<!--                  <q-item-section><q-input v-model="phone" /></q-item-section>-->
+<!--                </q-item>-->
+<!--                <q-item>-->
+<!--                  <q-item-section class="col-2 gt-sm">요청사항</q-item-section>-->
+<!--                  <q-item-section><q-input v-model="request" label="예) 문 앞에 놓아주세요" /></q-item-section>-->
+<!--                </q-item>-->
+<!--              </q-list>-->
+<!--            </div>-->
+<!--          </section>-->
         </div>
       </div>
     </section>
@@ -90,15 +90,15 @@
         </q-item>
         <q-item>
           <q-item-section class="col-2 gt-sm">{{payMethod == 'pickup' ? '보관소 이용료': '커넥터 수수료'}}</q-item-section>
-          <q-item-section>{{numberWithCommas(servicePrice)}}원</q-item-section>
+          <q-item-section>{{numberWithCommas(2000)}}원</q-item-section>
         </q-item>
         <q-item>
-          <q-item-section class="col-2 gt-sm">보유 단탈캐시</q-item-section>
-          <q-item-section>{{numberWithCommas(cash)}}원</q-item-section>
+          <q-item-section class="col-2 gt-sm">보유 포인트</q-item-section>
+          <q-item-section>{{numberWithCommas(buyer.point)}}원</q-item-section>
         </q-item>
         <q-item>
-          <q-item-section class="col-2 gt-sm">결제 후 잔액</q-item-section>
-          <q-item-section>{{numberWithCommas(cash - curItem.price - servicePrice)}}원</q-item-section>
+          <q-item-section class="col-2 gt-sm">결제 후 포인트</q-item-section>
+          <q-item-section>{{numberWithCommas(buyer.point - curItem.price - 2000)}}원</q-item-section>
         </q-item>
       </q-list>
     </section>
@@ -114,31 +114,6 @@ export default {
   name: 'Buy',
   data () {
     return {
-      name: '김댕댕',
-      email: 'dangdangkim@gmail.com',
-      phone: '010-1234-5678',
-      payMethod: 'pickup',
-      pickupSpace: null,
-      addr: '',
-      request: '',
-      cash: 300000000,
-      pickupOptions: [
-        {
-          value: 1,
-          label: '낙성대역',
-          desc: '서울 관악구 남부순환로 지하 1928'
-        },
-        {
-          value: 2,
-          label: '건대입구역',
-          desc: '서울 광진구 아차산로 243'
-        },
-        {
-          value: 3,
-          label: '신촌역',
-          desc: '서울 마포구 신촌로 지하 90'
-        },
-      ],
       curItem: null,
       buyer: null,
       slide: 0
@@ -146,6 +121,7 @@ export default {
   },
   mounted() {
     this.curItem_find()
+    this.buyerInfo()
   },
   computed: {
     itemId () {
@@ -186,6 +162,18 @@ export default {
         })
         .catch(err => {
           console.log(err)
+        })
+    },
+    //구매자 정보 가져오기
+    buyerInfo () {
+      axios
+        .get('api/member/view')
+        .then(res => {
+          this.buyer = res.data;
+          console.log(this.buyer);
+        })
+        .catch(err => {
+          console.log(err);
         })
     }
   }

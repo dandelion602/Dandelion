@@ -52,8 +52,8 @@ public class BoardService {
 
     }
 
-    public List<Board> findMyBoard(int number) {
-        return boardRepository.findMyBoard(number);
+    public List<Board> findMyBoard(int memberNumber) {
+        return boardRepository.findBymemberNumber(memberNumber);
     }
 
 }

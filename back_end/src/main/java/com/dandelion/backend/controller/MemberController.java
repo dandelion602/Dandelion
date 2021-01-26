@@ -6,10 +6,12 @@ import com.dandelion.backend.entity.form.PasswordModifyForm;
 import com.dandelion.backend.entity.member.Member;
 import com.dandelion.backend.entity.member.MyMemberDetails;
 import com.dandelion.backend.service.MemberService;
+import com.dandelion.backend.service.MemberServiceImpl;
 import com.dandelion.backend.utils.TokenUtils;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -28,6 +30,8 @@ import java.util.Optional;
 @Log4j2
 @CrossOrigin(origins = "*")
 public class MemberController {
+
+    @Autowired
 
     private final BCryptPasswordEncoder passwordEncoder;
     private final MemberService memberService;
@@ -81,5 +85,12 @@ public class MemberController {
     @GetMapping(value = "/findAll")
     public ResponseEntity findAll() {
         return ResponseEntity.ok(memberService.findAll());
+    }
+
+    @PostMapping(value = "/pointCharge")
+    public Member pointCharge (@AuthenticationPrincipal MyMemberDetails myMemberDetails, @RequestBody Map<String, Integer> point ) {
+        Member member = memberService.getOne(myMemberDetails.getNumber());
+        member.setPoint(member.getPoint()+ point.get("result"));
+        return memberService.save(member);
     }
 }

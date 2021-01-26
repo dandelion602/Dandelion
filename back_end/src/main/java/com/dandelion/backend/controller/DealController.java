@@ -173,13 +173,13 @@ public class DealController {
     }
 
     //버드 배송중
-    @RequestMapping(value = "/birdMatched/{boardNumber}/{birdNumber}", method = RequestMethod.GET)
-    public String birdMatched(@PathVariable int boardNumber, @PathVariable int birdNumber) {
+    @RequestMapping(value = "/birdMatched/{boardNumber}", method = RequestMethod.GET)
+    public String birdMatched(@PathVariable int boardNumber, @AuthenticationPrincipal MyMemberDetails myMemberDetails) {
         Board board = boardService.findById(boardNumber).get();
         Deal deal = dealService.findDealWithBoard(board);
         Locker locker = board.getLocker();
         Member buyer = memberRepository.getOne(deal.getBuyerNumber());
-        Member bird = memberRepository.getOne(birdNumber);
+        Member bird = memberRepository.getOne(myMemberDetails.getNumber());
 
         board.setStatus(6);
         deal.setTempStatus(6);

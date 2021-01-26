@@ -16,7 +16,8 @@ public interface BoardRepository extends JpaRepository<Board, Integer> {
     @Query("select b from Board b where b.title like %?1%")
     List<Board> searchWithTitle(String title);
 
-    @Query(value = "SELECT * FROM board b where b.member_number = :number", nativeQuery = true)
-    List<Board> findMyBoard(@Param("number") int number);
+//    @Query(value = "SELECT * FROM board b where b.member_number = :number", nativeQuery = true)
+//    List<Board> findMyBoard(@Param("number") int number);
 
+    List<Board> findBymemberNumber(int memberNumber);
 }

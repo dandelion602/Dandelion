@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 
 import java.sql.Date;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -21,6 +22,8 @@ class DealRepositoryTest {
     DealService dealService;
     @Autowired
     BoardService boardService;
+    @Autowired
+    DealRepository dealRepository;
 
     @Test
     public void dealTest() {
@@ -30,6 +33,14 @@ class DealRepositoryTest {
         System.out.println(new Date(System.currentTimeMillis()));
 
 
+    }
+
+    @Test
+    public  void test1() {
+        List<Deal> d = dealRepository.findBybuyerNumber(1);
+        for (Deal deal : d) {
+            System.out.println(deal.getNumber());
+        }
     }
 
 

@@ -7,7 +7,7 @@
         <span>
         <q-toolbar-title class="q-ma-sm">
           <q-avatar>
-            <img src="https://cdn.quasar.dev/logo/svg/quasar-logo.svg"  >
+            <img :src="require('../assets/Dandelion2.png')"  >
           </q-avatar>
           DandeilOn
         </q-toolbar-title>
@@ -17,12 +17,12 @@
 
     <q-drawer show-if-above v-model="left" side="left" bordered>
       <!-- drawer content -->
-        <q-scroll-area style="height: calc(100% - 150px); margin-top: 150px; border-right: 1px solid #ddd">
+        <q-scroll-area style="height: calc(100% - 150px); margin-top: 150px; border-right: 1px solid #ddd" >
           <q-list padding>
             <!-- <q-item clickable v-ripple router :to="{name: 'main'}"> -->
             <q-item clickable v-ripple :to="{ name: 'PageIndex' }">
               <q-item-section avatar>
-                <q-icon name="inbox" />
+                <q-icon name="local_florist" />
               </q-item-section>
 
               <q-item-section>
@@ -33,7 +33,7 @@
             <q-item clickable v-ripple :to="{ name: 'myPage'}">
               <q-item-section avatar>
                 <q-icon
-                name="star"
+                name="emoji_nature"
                  />
               </q-item-section>
 
@@ -44,7 +44,7 @@
 
             <q-item clickable v-ripple :to="{name: 'Stuff'}">
               <q-item-section avatar>
-                <q-icon name="drafts" />
+                <q-icon name="eco" />
               </q-item-section>
 
               <q-item-section>
@@ -54,7 +54,7 @@
 
             <q-item clickable v-ripple :to="{ name: 'bird' }">
               <q-item-section avatar>
-                <q-icon name="drafts" />
+                <q-icon name="flutter_dash" />
               </q-item-section>
               <q-item-section>
                 버드페이지
@@ -63,7 +63,7 @@
 
             <q-item class="float-" clickable v-ripple :to="{ name: 'developer' }">
               <q-item-section avatar>
-                <q-icon name="drafts" />
+                <q-icon name="groups" />
               </q-item-section>
               <q-item-section>
                 제작진
@@ -83,15 +83,39 @@
             </q-avatar>
             <div class="text-weight-bold">Razvan Stoenescu</div>
             <div>@rstoenescu</div>
+            <q-btn color="brown-5" icon="monetization_on" label="충전하기" class="pointCharge q-pr-md" @click="prompt = true" />
+            <q-btn color="brown-5" icon="exit_to_app" label="로그아웃" class="LogoutButton" @click="logout" />
           </div>
         </q-img>
 
-        <!-- <div class="absolute-bottom">
-          <q-avatar size="156px">
-            <img src="https://static.thenounproject.com/png/641028-200.png">
-          </q-avatar>
+<!--      다이얼로그-->
+      <q-dialog v-model="prompt" persistent>
+        <q-card style="min-width: 350px">
+          <q-card-section>
+            <div class="text-h6">충전하기</div>
+          </q-card-section>
 
-        </div> -->
+          <q-card-section class="q-pt-none">
+            <q-input dense v-model="point.result" autofocus @keyup.enter="prompt = false" />
+          </q-card-section>
+
+          <q-card-actions align="right" class="text-primary">
+            <q-btn flat label="취소하기" v-close-popup />
+            <q-btn flat label="충전하기" @click="pointCharge" v-close-popup  />
+          </q-card-actions>
+        </q-card>
+      </q-dialog>
+
+      <div class="absolute-bottom">
+          <q-avatar class="" size="250px" square>
+            <img :src="require('../assets/Dandelion2.png')">
+          </q-avatar>
+          <div class="flex flex-center text-h3">
+            DandeliOn
+          </div>
+
+
+        </div>
 
     </q-drawer>
 
@@ -102,22 +126,50 @@
       <router-view />
       </transition>
     </q-page-container>
-
   </q-layout>
+
+
+
 </template>
 
 <script>
+import axios from "axios";
 export default {
   data () {
     return {
       left: false,
-      transitionName: 'slide-left'
+      transitionName: 'slide-left',
+      prompt: false,
+      point: {
+        result: null
+      }
     }
   },
   watch:{
     $route (to, from){
       this.transitionName = to.name = 'PageIndex' ? 'slide-right' : 'slide-left'
       // console.log(to.name)
+    }
+  },
+  methods: {
+    pointCharge () {
+      axios
+        .post('api/pointCharge', this.point)
+        .then(res => {
+          alert("충전이 완료되었습니다");
+          this.$router.push('/main')
+        })
+        .catch(err => {
+          console.log(err);
+          console.log(this.point);
+          alert("숫자를 입력하세요")
+        })
+    },
+
+    logout () {
+      localStorage.removeItem('access_token');
+      this.$router.push('/')
+      location.reload();
     }
   }
 }
@@ -145,4 +197,8 @@ export default {
   opacity: 0;
   transform: translate(-100%,0);
 }
+.LogoutButton {
+  float: right;
+}
+
 </style>

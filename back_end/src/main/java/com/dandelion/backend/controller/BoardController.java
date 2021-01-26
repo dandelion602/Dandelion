@@ -62,9 +62,9 @@ public class BoardController {
 
 
     //내가 등록한 게시판 찾기
-    @RequestMapping(value = "/board/findMyBoard/{number}", method = RequestMethod.GET)
-    public List<Board> findMyBoard(@PathVariable int number) {
-        return boardService.findMyBoard(number);
+    @RequestMapping(value = "/board/findMyBoard", method = RequestMethod.GET)
+    public List<Board> findMyBoard(@AuthenticationPrincipal MyMemberDetails myMemberDetails) {
+        return boardService.findMyBoard(myMemberDetails.getNumber());
     }
 
     //내가 구매한 게사판 찾기

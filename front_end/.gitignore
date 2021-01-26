@@ -3,7 +3,7 @@
 node_modules
 
 # Image files
-/src/assets/images
+/src/assets/images/*
 
 # Quasar core related directories
 .quasar

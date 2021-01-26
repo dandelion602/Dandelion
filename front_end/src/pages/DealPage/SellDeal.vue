@@ -22,6 +22,11 @@
 
 <script>
 import axios from "axios";
+import jwt_decode from "jwt-decode";
+
+let token = localStorage.getItem("access_token");
+let decoded = jwt_decode(token);
+console.log(decoded.role);
 
 export default {
     computed:{
@@ -38,13 +43,14 @@ export default {
           required: true,
           label: '게시글 제목',
           align: 'left',
-          field: row => row.boardNumber.title,
+          field: row => row.title,
           format: val => `${val}`,
           sortable: true,
         },
-        { name: 'price', align: 'center', label: '가격', field: row => row.boardNumber.price, sortable: true },
-        { name: 'dealmethod', label: '거래방법', field: 'isPickup', sortable: true },
-        { name: 'buyer', label: '구매자', field: 'buyerNumber'  }
+        { name: 'contents', align: 'center', label: '내용', field: 'contents', sortable: true },
+        { name: 'price', align: 'center', label: '가격', field: row => row.price, sortable: true },
+        { name: 'status', label: '거래상태', field: 'status', sortable: true }
+        // { name: 'buyer', label: '구매자', field: 'buyerNumber'  }
       ],
       data: [
         // {
@@ -63,9 +69,9 @@ export default {
   methods: {
     orderListBuy () {
       axios
-        .get('api/order-history/sell')
+        .get('api/board/findMyBoard')
         .then(res => {
-          this.data = res.data;
+          this.data = res.data.filter(data =>  data.status < 5 || data.status === 7);
           console.log(this.data);
         })
         .catch(err => {

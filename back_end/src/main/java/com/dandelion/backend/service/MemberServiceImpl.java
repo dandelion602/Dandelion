@@ -14,6 +14,7 @@ import java.util.Optional;
 @Service
 public class MemberServiceImpl implements MemberService{
 
+
     @NonNull
     @Autowired
     private MemberRepository memberRepository;
@@ -43,5 +44,10 @@ public class MemberServiceImpl implements MemberService{
     @Override
     public Member save (Member member)  {
         return memberRepository.save(member);
+    }
+
+    @Override
+    public Member getOne(int number) {
+        return memberRepository.getOne(number);
     }
 }

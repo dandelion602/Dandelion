@@ -20,4 +20,6 @@ public interface MemberService {
     Member save (Member member);
 
     Member passwordUpdate(Member member, PasswordModifyForm passwordModifyForm);
+
+    Member getOne(int number);
 }

@@ -41,7 +41,8 @@ const routes = [
     component: () => import('layouts/Layout.vue'),
     children: [
       { path: '', name: 'PageIndex', component: () => import('pages/Index.vue') },
-      { path: 'detail/:itemId',name:'Detail', component: () => import('pages/Detail.vue') },
+      { path: '/main/detail/:itemId',name:'Detail', component: () => import('pages/Detail.vue') },
+      { path: '/main/bird_detail/:itemId',name:'Brid_Detail', component: () => import('pages/Bird_Detail.vue') },
       { path: '/buy/:itemId', component: () => import('pages/Buy.vue') },
       { path: '/test', component: () => import('pages/Test.vue')},
       { path: '/stuff', name: 'Stuff', component: () => import('pages/Stuff_upload.vue')},
