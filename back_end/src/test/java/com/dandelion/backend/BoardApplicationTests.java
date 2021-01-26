@@ -11,10 +11,4 @@ class BoardApplicationTests {
 
     @Autowired
     public ServletContext context;
-
-    @Test
-    void contextLoads() {
-
-    }
-
 }
