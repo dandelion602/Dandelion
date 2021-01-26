@@ -57,8 +57,8 @@ public class DealController {
         deal.setTempStatus(1); // status 1(물건등록 대기중)
 
         // 구매자의 잔액확인
-        if (buyer.getPoint() >= board.getPrice() + 2000) {
-            buyer.setPoint(buyer.getPoint() - board.getPrice() - 2000);
+        if (buyer.getPoint() >= board.getPrice() + dealService.getBirdFee()) {
+            buyer.setPoint(buyer.getPoint() - board.getPrice() - dealService.getBirdFee());
             memberRepository.save(buyer);
             lockerService.save(locker);
             boardService.save(board);
@@ -115,12 +115,12 @@ public class DealController {
         Locker locker = board.getLocker();
         Member buyer = memberRepository.getOne(deal.getBuyerNumber());
 
-        board.setStatus(2);
+        board.setStatus(0);
         deal.setTempStatus(2);
         locker.setIsUse(0);
         locker.setBoardNumber(null);
         locker.setInputDate(null);
-        buyer.setPoint(buyer.getPoint() + board.getPrice() + 2000);
+        buyer.setPoint(buyer.getPoint() + board.getPrice() + dealService.getBirdFee());
 
 
         boardService.save(board);
@@ -147,7 +147,7 @@ public class DealController {
         locker.setBoardNumber(null);
         locker.setInputDate(null);
         // 버드 수수료 반환
-        buyer.setPoint(buyer.getPoint() + 2000);
+        buyer.setPoint(buyer.getPoint() + dealService.getBirdFee());
 
         boardService.save(board);
         dealService.save(deal);
@@ -183,7 +183,7 @@ public class DealController {
 
         board.setStatus(6);
         deal.setTempStatus(6);
-        deal.setShippingDate(new Date(System.currentTimeMillis()));
+        deal.setShippingDate(new Date());
         locker.setIsUse(0);
         locker.setBoardNumber(null);
         locker.setInputDate(null);
@@ -208,7 +208,7 @@ public class DealController {
         board.setStatus(7);
         deal.setTempStatus(7);
         deal.setDeliveryDate(new Date());
-        bird.setPoint(bird.getPoint() + 2000);
+        bird.setPoint(bird.getPoint() + dealService.getBirdFee());
 
         boardService.save(board);
         dealService.save(deal);

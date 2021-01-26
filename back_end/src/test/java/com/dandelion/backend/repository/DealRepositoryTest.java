@@ -9,7 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
 
-import java.sql.Date;
+import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -24,10 +24,9 @@ class DealRepositoryTest {
 
     @Test
     public void dealTest() {
-//        Deal deal = dealService.findDealWithBoard(boardService.getOne(3));
         System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%");
-//        System.out.println(deal.getNumber());
-        System.out.println(new Date(System.currentTimeMillis()));
+        Date date = new Date();
+        System.out.println(date);
 
 
     }

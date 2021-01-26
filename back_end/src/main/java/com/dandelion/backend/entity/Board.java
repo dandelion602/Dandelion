@@ -18,8 +18,6 @@ import java.util.concurrent.locks.Lock;
 @Entity
 public class Board {
 
-    public final Integer birdFee = 2000;
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int number;

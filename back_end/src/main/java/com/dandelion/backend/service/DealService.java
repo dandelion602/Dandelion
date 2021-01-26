@@ -14,6 +14,8 @@ import java.util.List;
 @Service
 public class DealService {
 
+    private final Integer birdFee = 2000;
+
     @Autowired
     DealRepository dealRepository;
 
@@ -41,5 +43,9 @@ public class DealService {
 
     public Deal findDealWithBoard(Board board) {
         return dealRepository.findByBoardNumber(board.getNumber());
+    }
+
+    public Integer getBirdFee() {
+        return birdFee;
     }
 }
