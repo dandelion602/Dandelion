@@ -30,6 +30,8 @@ public class ImageController {
         int order = 0;
 
         Path dir = imageService.getAbsolutePath("../front_end/src/assets/images/");
+//        Path dir = imageService.getAbsolutePath("/images");
+
 
         Board board = boardService.findLastBoard();
 

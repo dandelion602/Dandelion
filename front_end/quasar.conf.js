@@ -76,12 +76,14 @@ cfg.module.rules.push({
     // Full list of options: https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-devServer
     devServer: {
       https: false,
-      port: 8080,
+      // port: 8080,
+      port: 80,
       open: true, // opens browser window automatically
       proxy: {
         '/api':{
           // target:"http://140.238.19.235:80/",
-          target:"http://localhost:9090/",
+          // target:"http://localhost:9090/",
+          target:"http://july2day.iptime.org:19090",
           changeOrigin:true,
           pathRewrite:{
             '^/api': ''
