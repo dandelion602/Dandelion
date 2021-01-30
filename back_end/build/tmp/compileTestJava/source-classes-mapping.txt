@@ -1,0 +1,12 @@
+com/dandelion/backend/BoardApplicationTests.java
+ com.dandelion.backend.BoardApplicationTests
+com/dandelion/backend/directory/DirTest.java
+ com.dandelion.backend.directory.DirTest
+com/dandelion/backend/service/BaordServiceTest.java
+ com.dandelion.backend.service.BaordServiceTest
+com/dandelion/backend/repository/DealRepositoryTest.java
+ com.dandelion.backend.repository.DealRepositoryTest
+com/dandelion/backend/repository/BoardRepositoryTest.java
+ com.dandelion.backend.repository.BoardRepositoryTest
+com/dandelion/backend/controller/BoardControllerTest.java
+ com.dandelion.backend.controller.BoardControllerTest
