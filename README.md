@@ -1,20 +1,30 @@
-# dandelion602
+# Dandelion_project
 
-**node_modules가 없을시 dandelion2 디렉터리의 Terminal에서
+## Front_end
 
-**npm install 을 입력해주세요
+> Node v10 버전 이상을 사용해주세요!
+___
 
-**Vue실행시 구동시 필수 설치
+1. 작업하실 디렉토리로 이동 후 프로젝트를 클론받으세요
+```sh
+$ cd Dandelion_project
+$ git clone https://github.com/CanDoVueJS/RESTful-api-server.git
+```
 
-Nodejs(버전 10 이상)
+2. 클론받은 프로젝트의 디렉토리로 이동하세요
+```sh
+cd front-end
+```
+3. 프로젝트에서 사용할 패키지를 설치하세요
+```sh
+npm install
+# 또는
+npm i
+```
 
-Vue(npm install vue
+4. 다음 커맨드를 입력하여 실행시키세여
 
-Vue/cli(npm install -g @vue/cli)
+```sh
+quasar dev 
+```
 
-quasar/cli(npm install -g @quasar/cli)
-
-
-**quasar cli 실행 커맨드 
-
-: quasar dev
