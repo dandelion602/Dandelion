@@ -22,7 +22,7 @@ npm install
 npm i
 ```
 
-4. 다음 커맨드를 입력하여 실행시키세
+4. 다음 커맨드를 입력하여 실행시키세요
 
 ```sh
 quasar dev 
